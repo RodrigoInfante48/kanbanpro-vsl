@@ -1,2 +1,4 @@
 preview-top.png
 preview-bot.png
+node_modules/
+package-lock.json
