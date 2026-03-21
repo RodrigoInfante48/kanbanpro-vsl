@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KanbanPRO — Elevator Pitch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00e6c7",
+            "bg-dark": "#0f2320",
+            "gold": "#FFB800",
+          },
+          fontFamily: { sans: ["Inter", "sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+
+    @keyframes gradient-flow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-border {
+      background: linear-gradient(270deg, #00e6c7, #FFB800, #00e6c7, #FFB800);
+      background-size: 400% 400%;
+      animation: gradient-flow 6s ease infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(0,230,199,0.2); }
+      50%       { box-shadow: 0 0 45px rgba(0,230,199,0.5); }
+    }
+    .glow-pulse { animation: pulse-glow 3s ease-in-out infinite; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-1 { animation: fadeInUp 0.6s ease both; }
+    .fade-in-2 { animation: fadeInUp 0.6s 0.15s ease both; }
+    .fade-in-3 { animation: fadeInUp 0.6s 0.3s ease both; }
+    .fade-in-4 { animation: fadeInUp 0.6s 0.45s ease both; }
+
+    .glass {
+      background: rgba(0, 230, 199, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 230, 199, 0.2);
+    }
+
+    /* ── Print card ────────────────────────────── */
+    @media print {
+      body { background: #0f2320 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .no-print { display: none !important; }
+      .print-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body class="bg-[#0f2320] text-slate-100 antialiased min-h-screen">
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section class="relative pt-16 pb-10 px-6 text-center overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 blur-[120px] rounded-full"></div>
+    </div>
+
+    <p class="fade-in-1 text-xs font-bold tracking-[0.25em] uppercase text-primary mb-3">Elevator Pitch · DailyDuty</p>
+    <h1 class="fade-in-2 text-4xl md:text-6xl font-black leading-tight mb-4">
+      KanbanPRO
+    </h1>
+    <p class="fade-in-3 text-lg md:text-xl text-slate-400 max-w-xl mx-auto">
+      Mobile-first Six Sigma &nbsp;·&nbsp; $22 one-time &nbsp;·&nbsp; 2 free bonuses
+    </p>
+
+    <!-- Lang toggle hint -->
+    <div class="fade-in-4 mt-6 flex justify-center gap-3 no-print">
+      <button onclick="showLang('es')" id="btn-es"
+        class="px-4 py-1.5 text-xs font-bold rounded-full border border-primary text-primary bg-primary/10">
+        Español
+      </button>
+      <button onclick="showLang('en')" id="btn-en"
+        class="px-4 py-1.5 text-xs font-bold rounded-full border border-slate-600 text-slate-400 hover:border-primary hover:text-primary transition">
+        English
+      </button>
+    </div>
+  </section>
+
+  <!-- ─── PITCH SCRIPT ─────────────────────────────────────── -->
+  <main class="max-w-3xl mx-auto px-6 pb-20 space-y-8">
+
+    <!-- ── SPANISH ──────────────────────────────────────────── -->
+    <div id="pitch-es" class="space-y-8">
+
+      <!-- Hook -->
+      <div class="glass rounded-2xl p-6 md:p-8">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">⚡ Hook — 0–5 seg</p>
+        <p class="text-xl md:text-2xl font-bold leading-snug">
+          "¿Cuánto tiempo pierdes cada semana <span class="text-primary">documentando proyectos</span> en Excel o en apps que nunca abres desde el celular?"
+        </p>
+      </div>
+
+      <!-- Pain -->
+      <div class="glass rounded-2xl p-6 md:p-8">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-gold mb-3">🔥 Pain — 5–15 seg</p>
+        <p class="text-base md:text-lg text-slate-300 leading-relaxed">
+          Las herramientas de Six Sigma y gestión de proyectos son caras, complicadas, y las diseñaron para escritorio.
+          Resultado: tus equipos improvisan, los procesos no se documentan, y las mejoras se pierden en WhatsApp.
+        </p>
+      </div>
+
+      <!-- Solution -->
+      <div class="glass rounded-2xl p-6 md:p-8 border border-primary/30">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">✅ Solución — 15–35 seg</p>
+        <p class="text-base md:text-lg text-slate-200 leading-relaxed">
+          <strong class="text-white">KanbanPro</strong> es el primer sistema de gestión de proyectos
+          <span class="text-primary font-semibold">mobile-first</span> que combina
+          <strong>Kanban</strong>, la metodología <strong>DMAIC de Six Sigma</strong> y <strong>Kaizen</strong>
+          en un solo workspace de Notion. Sin licencias, sin curva de aprendizaje interminable.
+          <br /><br />
+          Más de <span class="text-primary font-bold">120 profesionales</span> ya lo usan para capturar mejoras en tiempo real,
+          eliminar cuellos de botella y llevar sus proyectos desde la definición hasta el control — todo desde el teléfono.
+        </p>
+      </div>
+
+      <!-- Value + Price -->
+      <div class="rounded-2xl overflow-hidden">
+        <div class="animated-border p-[2px] rounded-2xl">
+          <div class="bg-[#0f2320] rounded-[calc(1rem-2px)] p-6 md:p-8">
+            <p class="text-xs font-bold tracking-[0.2em] uppercase text-gold mb-4">💰 Valor — 35–50 seg</p>
+            <p class="text-base md:text-lg text-slate-200 leading-relaxed mb-5">
+              Herramientas como Minitab o Tableau cobran <span class="line-through text-slate-500">$124.90/mes</span>.
+              KanbanPro son <span class="text-gold font-black text-2xl">$22 — un solo pago</span>.
+              Y viene con <strong class="text-white">dos bonos gratuitos</strong>:
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="mt-1 w-5 h-5 rounded-full bg-gold/20 text-gold flex items-center justify-center text-xs font-black flex-shrink-0">1</span>
+                <span class="text-slate-300"><strong class="text-white">Visual Workspace</strong> — dashboard con analytics drag-and-drop</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 w-5 h-5 rounded-full bg-gold/20 text-gold flex items-center justify-center text-xs font-black flex-shrink-0">2</span>
+                <span class="text-slate-300"><strong class="text-white">Notion Blueprint</strong> — template organizacional completo mobile + desktop</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA + QR -->
+      <div class="glass rounded-2xl p-6 md:p-8 text-center">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">📲 Call to Action — 50–60 seg</p>
+        <p class="text-base md:text-lg text-slate-200 leading-relaxed mb-6">
+          "Solo quedan <span class="text-gold font-bold">28 unidades este mes</span>. Escanea este QR —
+          te lleva a mi Linktree donde puedes ver el demo completo y activar tu
+          <span class="text-primary font-bold">prueba gratuita de 8 días</span>, sin tarjeta de crédito, con garantía total de devolución."
+        </p>
+
+        <!-- QR Code Card -->
+        <div class="print-card inline-block">
+          <div class="animated-border p-[2px] rounded-2xl glow-pulse inline-block">
+            <div class="bg-[#0a1a18] rounded-[calc(1rem-2px)] p-6 flex flex-col items-center gap-4">
+              <!-- QR Code via API -->
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Flinktr.ee%2FDailyDuty&bgcolor=0a1a18&color=00e6c7&qzone=1&format=png"
+                alt="QR Code → linktr.ee/DailyDuty"
+                class="w-44 h-44 rounded-xl"
+                onerror="this.parentElement.innerHTML=qrFallback()"
+              />
+              <div class="text-center">
+                <p class="text-primary font-bold text-sm tracking-wide">linktr.ee/DailyDuty</p>
+                <p class="text-slate-400 text-xs mt-1">Free trial · Demo · FAQ</p>
+              </div>
+              <div class="px-4 py-2 bg-primary/10 border border-primary/30 rounded-full">
+                <p class="text-primary text-xs font-bold tracking-widest uppercase">Escanea para tu prueba gratis</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timing reference -->
+      <div class="glass rounded-xl p-4 text-center no-print">
+        <p class="text-xs text-slate-500">
+          Duración estimada: <span class="text-primary font-bold">45–60 segundos</span> &nbsp;·&nbsp;
+          Tono: confiado, consultivo, sin presión &nbsp;·&nbsp; Contexto: networking, reuniones cortas, ferias
+        </p>
+      </div>
+
+    </div><!-- /pitch-es -->
+
+    <!-- ── ENGLISH ────────────────────────────────────────── -->
+    <div id="pitch-en" class="space-y-8 hidden">
+
+      <!-- Hook -->
+      <div class="glass rounded-2xl p-6 md:p-8">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">⚡ Hook — 0–5 sec</p>
+        <p class="text-xl md:text-2xl font-bold leading-snug">
+          "How many hours does your team lose every week <span class="text-primary">tracking projects</span> in spreadsheets or tools nobody opens on their phone?"
+        </p>
+      </div>
+
+      <!-- Pain -->
+      <div class="glass rounded-2xl p-6 md:p-8">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-gold mb-3">🔥 Pain — 5–15 sec</p>
+        <p class="text-base md:text-lg text-slate-300 leading-relaxed">
+          Six Sigma and project management tools are expensive, complex, and desktop-first.
+          The result? Teams improvise, processes go undocumented, and improvements get lost in email threads.
+        </p>
+      </div>
+
+      <!-- Solution -->
+      <div class="glass rounded-2xl p-6 md:p-8 border border-primary/30">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">✅ Solution — 15–35 sec</p>
+        <p class="text-base md:text-lg text-slate-200 leading-relaxed">
+          <strong class="text-white">KanbanPro</strong> is the first <span class="text-primary font-semibold">mobile-first</span> project management system
+          that combines <strong>Kanban boards</strong>, <strong>Six Sigma DMAIC</strong>, and <strong>Kaizen</strong>
+          in a single Notion workspace. No expensive licenses. No steep learning curve.
+          <br /><br />
+          Over <span class="text-primary font-bold">120 professionals worldwide</span> are already using it
+          to capture improvements in real time, eliminate bottlenecks, and run projects from definition to control — from their phone.
+        </p>
+      </div>
+
+      <!-- Value + Price -->
+      <div class="rounded-2xl overflow-hidden">
+        <div class="animated-border p-[2px] rounded-2xl">
+          <div class="bg-[#0f2320] rounded-[calc(1rem-2px)] p-6 md:p-8">
+            <p class="text-xs font-bold tracking-[0.2em] uppercase text-gold mb-4">💰 Value — 35–50 sec</p>
+            <p class="text-base md:text-lg text-slate-200 leading-relaxed mb-5">
+              Tools like Minitab or Tableau charge <span class="line-through text-slate-500">$124.90/mo</span>.
+              KanbanPro is <span class="text-gold font-black text-2xl">$22 — one time</span>.
+              And it ships with <strong class="text-white">two free bonuses</strong>:
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="mt-1 w-5 h-5 rounded-full bg-gold/20 text-gold flex items-center justify-center text-xs font-black flex-shrink-0">1</span>
+                <span class="text-slate-300"><strong class="text-white">Visual Workspace</strong> — custom dashboard with drag-and-drop analytics</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 w-5 h-5 rounded-full bg-gold/20 text-gold flex items-center justify-center text-xs font-black flex-shrink-0">2</span>
+                <span class="text-slate-300"><strong class="text-white">Notion Blueprint</strong> — full organizational template syncing mobile to desktop</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA + QR -->
+      <div class="glass rounded-2xl p-6 md:p-8 text-center">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">📲 Call to Action — 50–60 sec</p>
+        <p class="text-base md:text-lg text-slate-200 leading-relaxed mb-6">
+          "Only <span class="text-gold font-bold">28 units available this month</span>. Scan this QR —
+          it takes you straight to my Linktree where you can watch the full demo and activate your
+          <span class="text-primary font-bold">free 8-day trial</span>. No credit card. Full money-back guarantee."
+        </p>
+
+        <!-- QR Code Card -->
+        <div class="print-card inline-block">
+          <div class="animated-border p-[2px] rounded-2xl glow-pulse inline-block">
+            <div class="bg-[#0a1a18] rounded-[calc(1rem-2px)] p-6 flex flex-col items-center gap-4">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Flinktr.ee%2FDailyDuty&bgcolor=0a1a18&color=00e6c7&qzone=1&format=png"
+                alt="QR Code → linktr.ee/DailyDuty"
+                class="w-44 h-44 rounded-xl"
+              />
+              <div class="text-center">
+                <p class="text-primary font-bold text-sm tracking-wide">linktr.ee/DailyDuty</p>
+                <p class="text-slate-400 text-xs mt-1">Free trial · Demo · FAQ</p>
+              </div>
+              <div class="px-4 py-2 bg-primary/10 border border-primary/30 rounded-full">
+                <p class="text-primary text-xs font-bold tracking-widest uppercase">Scan for your free trial</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timing reference -->
+      <div class="glass rounded-xl p-4 text-center no-print">
+        <p class="text-xs text-slate-500">
+          Estimated duration: <span class="text-primary font-bold">45–60 seconds</span> &nbsp;·&nbsp;
+          Tone: confident, consultative, no pressure &nbsp;·&nbsp; Context: networking, quick meetings, conferences
+        </p>
+      </div>
+
+    </div><!-- /pitch-en -->
+
+    <!-- ── CHEAT SHEET ───────────────────────────────────────── -->
+    <div class="glass rounded-2xl p-6 md:p-8 no-print">
+      <h2 class="text-base font-bold text-primary mb-4 tracking-wide">Pro Tips — VP Sales Mindset</h2>
+      <ul class="space-y-3 text-sm text-slate-300">
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">→</span>
+          <span><strong class="text-white">Empieza con una pregunta</strong>, no con tu nombre ni tu empresa. El dolor abre, el pitch cierra.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">→</span>
+          <span><strong class="text-white">Pausa 2 segundos</strong> antes de dar el precio. La pausa vende más que la palabra.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">→</span>
+          <span><strong class="text-white">Ancla siempre</strong>: "$124.90 al mes... o $22 de una sola vez." El cerebro elige lo segundo automáticamente.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">→</span>
+          <span><strong class="text-white">El QR es tu cierre silencioso</strong>. Muéstralo mientras hablas de la prueba gratuita. Elimina fricciones.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">→</span>
+          <span><strong class="text-white">Escasez es real</strong>: "28 unidades al mes" — dilo con calma, no con urgencia artificial.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-primary mt-0.5">→</span>
+          <span><strong class="text-white">Termina siempre con una pregunta</strong>: "¿Cuál es el proyecto que más te está costando tiempo ahorita?"</span>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- ─── PRINT BUTTON ─────────────────────────────────────── -->
+  <div class="fixed bottom-6 right-6 no-print">
+    <button onclick="window.print()"
+      class="w-12 h-12 rounded-full bg-primary text-[#0f2320] font-black flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+      title="Imprimir / Guardar PDF">
+      🖨
+    </button>
+  </div>
+
+  <script>
+    function showLang(lang) {
+      document.getElementById('pitch-es').classList.toggle('hidden', lang !== 'es');
+      document.getElementById('pitch-en').classList.toggle('hidden', lang !== 'en');
+      document.getElementById('btn-es').className = lang === 'es'
+        ? 'px-4 py-1.5 text-xs font-bold rounded-full border border-primary text-primary bg-primary/10'
+        : 'px-4 py-1.5 text-xs font-bold rounded-full border border-slate-600 text-slate-400 hover:border-primary hover:text-primary transition';
+      document.getElementById('btn-en').className = lang === 'en'
+        ? 'px-4 py-1.5 text-xs font-bold rounded-full border border-primary text-primary bg-primary/10'
+        : 'px-4 py-1.5 text-xs font-bold rounded-full border border-slate-600 text-slate-400 hover:border-primary hover:text-primary transition';
+    }
+  </script>
+
+</body>
+</html>
