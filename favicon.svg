@@ -1,27 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="12" fill="#000"/>
+  <!-- Black background, no rounded corners to match the logo -->
+  <rect width="100" height="100" fill="#000"/>
 
-  <!-- Teal piece (bottom-left), rotated -->
-  <g transform="translate(8,30) rotate(-10,20,22)">
-    <path d="M0,0 L14,0 C14,-5 10,-8 10,-12 C10,-18 18,-18 18,-12 C18,-8 14,-5 14,0
-             L28,0 L28,14 C33,14 36,10 40,10 C46,10 46,18 40,18 C36,18 33,14 28,14
-             L28,28 L0,28 Z"
-          fill="#3aafa9"/>
-  </g>
+  <!-- Left D shape -->
+  <path d="M20,28 L38,28 C55,28 65,38 65,50 C65,62 55,72 38,72 L20,72 Z" fill="#fff"/>
 
-  <!-- Yellow piece (top-center) -->
-  <g transform="translate(30,8) rotate(5,20,22)">
-    <path d="M0,0 L14,0 C14,-5 10,-8 10,-12 C10,-18 18,-18 18,-12 C18,-8 14,-5 14,0
-             L28,0 L28,14 C33,14 36,10 40,10 C46,10 46,18 40,18 C36,18 33,14 28,14
-             L28,28 L0,28 Z"
-          fill="#FFD700"/>
-  </g>
-
-  <!-- Red piece (right) -->
-  <g transform="translate(52,34) rotate(-8,20,22)">
-    <path d="M0,0 L14,0 C14,-5 10,-8 10,-12 C10,-18 18,-18 18,-12 C18,-8 14,-5 14,0
-             L28,0 L28,14 C33,14 36,10 40,10 C46,10 46,18 40,18 C36,18 33,14 28,14
-             L28,28 L0,28 Z"
-          fill="#e84040"/>
-  </g>
+  <!-- Right D shape -->
+  <path d="M42,28 L57,28 C74,28 82,38 82,50 C82,62 74,72 57,72 L42,72 Z" fill="#fff"/>
 </svg>
