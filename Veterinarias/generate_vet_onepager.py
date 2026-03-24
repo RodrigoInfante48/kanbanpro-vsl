@@ -76,8 +76,10 @@ def benefit_row(cv, y, label, desc, idx, method_tag=None, method_color=None):
     cv.setFillColor(TEAL)
     cv.circle(46, y + 16, 11, fill=1, stroke=0)
     checkmark(cv, 46, y + 16, 10, DARK_NAVY)
-    txt(cv, label, 68, y + 20, 'Helvetica-Bold', 10.5, WHITE)
-    txt(cv, desc,  68, y + 6,  'Helvetica',      8.5,  GRAY)
+    label_y = y + 11 if not desc else y + 20
+    txt(cv, label, 68, label_y, 'Helvetica-Bold', 10.5, WHITE)
+    if desc:
+        txt(cv, desc, 68, y + 6, 'Helvetica', 8.5, GRAY)
     if method_tag and method_color:
         method_badge(cv, W - 74, y + 12, method_tag, method_color)
 
@@ -133,12 +135,8 @@ txt(cv, '!', 50, PAIN_TOP - PAIN_H/2 - 7, 'Helvetica-Bold', 22, DARK_NAVY, 'cent
 
 txt(cv, 'El caos real de tu veterinaria hoy:',
     80, PAIN_TOP - 20, 'Helvetica-Bold', 11.5, GOLD)
-txt(cv, 'Citas que se cruzan, pacientes hospitalizados sin registro,',
-    80, PAIN_TOP - 38, 'Helvetica', 10, WHITE)
-txt(cv, 'medicacion que nadie sabe si ya fue aplicada.',
-    80, PAIN_TOP - 54, 'Helvetica', 10, WHITE)
-txt(cv, 'Tu clinica funciona — pero tu cabeza carga con todo el sistema.',
-    80, PAIN_TOP - 70, 'Helvetica', 9.5, GRAY)
+txt(cv, 'Tu clinica funciona, pero tu cabeza carga con todo el sistema.',
+    80, PAIN_TOP - 46, 'Helvetica', 10, WHITE)
 
 # Linea divisora metodologias
 cv.setStrokeColor(HexColor('#2a3a4a'))
@@ -159,13 +157,13 @@ BENEFITS_TOP = PAIN_TOP - PAIN_H - 10
 
 benefits = [
     ('Tablero Kanban de citas y cirugias en tiempo real',
-     'Ve que sala esta ocupada, quien opera y a que hora — desde tu celular',
+     '',
      'KANBAN', COLOR_KANBAN),
-    ('Medicion 6 Sigma: control de pacientes hospitalizados',
-     'Sin errores: cada mascota, medicacion y responsable — siempre visible',
+    ('Medicion 6 Sigma: sin errores, todo es visible.',
+     '',
      '6 SIGMA', COLOR_6SIGMA),
-    ('Kaizen: coordinacion sin WhatsApp caotico',
-     'Mejora continua — cada medico ve su agenda sin mensajes innecesarios',
+    ('Kaizen: Coordinacion mobile first, mejora continua dia a dia.',
+     '',
      'KAIZEN', COLOR_KAIZEN),
     ('DMAIC: estandariza tus tareas clinicas diarias',
      'Define, mide y controla: esterilizacion, limpieza y seguimientos',
