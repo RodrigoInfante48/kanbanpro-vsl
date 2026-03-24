@@ -6,6 +6,7 @@ Target: Propietarios de clinica veterinaria en Chapinero / Usaquen, Bogota
 """
 
 import os
+import qrcode
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
@@ -28,8 +29,16 @@ COLOR_6SIGMA  = HexColor('#818cf8')   # Indigo — 6 Sigma
 COLOR_KAIZEN  = HexColor('#34d399')   # Esmeralda — Kaizen mejora continua
 COLOR_DMAIC   = HexColor('#FFB800')   # Gold — DMAIC control
 
-OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                      'kanbanpro-vet-onepager.pdf')
+OUTPUT  = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       'kanbanpro-vet-onepager.pdf')
+QR_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       '_qr_temp.png')
+
+# Generar QR code
+_qr = qrcode.QRCode(version=1, box_size=10, border=2)
+_qr.add_data('https://rodrigoinfante48.github.io/kanbanpro-vsl/')
+_qr.make(fit=True)
+_qr.make_image(fill_color='black', back_color='white').save(QR_PATH)
 W, H = A4   # 595 x 842 pt
 
 # ─────────────────────────────────────────────
@@ -112,7 +121,7 @@ cv.setDash(4, 4)
 cv.line(60, H - 72, W - 60, H - 72)
 cv.setDash()
 
-txt(cv, 'Gestion visual para tu veterinaria — Sin caos operativo',
+txt(cv, 'Gestion visual para tu veterinaria. Sin caos operativo.',
     W/2, H - 92, 'Helvetica-Bold', 11.5, DARK_SURF, 'center')
 
 badge_x = W/2 - 60
@@ -147,7 +156,7 @@ cv.line(80, PAIN_TOP - 82, W - 40, PAIN_TOP - 82)
 method_badge(cv, 82,  PAIN_TOP - 100, 'DMAIC', COLOR_DMAIC)
 method_badge(cv, 146, PAIN_TOP - 100, 'KANBAN', COLOR_KANBAN)
 method_badge(cv, 210, PAIN_TOP - 100, 'KAIZEN', COLOR_KAIZEN)
-txt(cv, '— 3 metodologias. 1 sistema. Para tu veterinaria.',
+txt(cv, '3 metodologias, 1 sistema. Para tu clinica veterinaria.',
     276, PAIN_TOP - 93, 'Helvetica', 7.5, GRAY)
 
 # ════════════════════════════════════════════════
@@ -156,16 +165,16 @@ txt(cv, '— 3 metodologias. 1 sistema. Para tu veterinaria.',
 BENEFITS_TOP = PAIN_TOP - PAIN_H - 10
 
 benefits = [
-    ('Tablero Kanban de citas y cirugias en tiempo real',
+    ('Tablero Kanban en tiempo real',
      '',
      'KANBAN', COLOR_KANBAN),
-    ('Medicion 6 Sigma: sin errores, todo es visible.',
+    ('Sin errores en cada turno. Todo visible desde el primer dia.',
      '',
      '6 SIGMA', COLOR_6SIGMA),
-    ('Kaizen: Coordinacion mobile first, mejora continua dia a dia.',
+    ('Coordinacion mobile first. Mejora continua dia a dia.',
      '',
      'KAIZEN', COLOR_KAIZEN),
-    ('DMAIC: estandariza tus tareas clinicas diarias',
+    ('Estandariza tus tareas clinicas diarias',
      'Define, mide y controla: esterilizacion, limpieza y seguimientos',
      'DMAIC', COLOR_DMAIC),
 ]
@@ -187,15 +196,25 @@ cv.setLineWidth(2)
 cv.line(40, PRICE_TOP, W - 40, PRICE_TOP)
 
 mid = CTA_H + PRICE_H / 2
+price_cx = 195   # centro del bloque de precio (izquierda)
 
-txt(cv, 'Compara antes de decidir:', W/2, mid + 82,
+# QR code — lado derecho
+QR_SIZE = 110
+qr_x = W - 55 - QR_SIZE          # margen derecho 55 pt
+qr_y = mid - QR_SIZE / 2
+cv.drawImage(QR_PATH, qr_x, qr_y, QR_SIZE, QR_SIZE, preserveAspectRatio=True)
+# etiqueta bajo el QR
+txt(cv, 'Escanea para ver mas', qr_x + QR_SIZE / 2, qr_y - 12,
+    'Helvetica', 6.5, GRAY, 'center')
+
+txt(cv, 'Compara antes de decidir:', price_cx, mid + 82,
     'Helvetica-Bold', 12, WHITE, 'center')
 
 comp_str = 'Competidores: USD 124.90 / mes (o mas)'
 cv.setFont('Helvetica', 10.5)
 cv.setFillColor(GRAY)
 str_w  = cv.stringWidth(comp_str, 'Helvetica', 10.5)
-comp_x = W/2 - str_w/2
+comp_x = price_cx - str_w / 2
 cv.drawString(comp_x, mid + 56, comp_str)
 cv.setStrokeColor(RED_DIM)
 cv.setLineWidth(1.5)
@@ -204,18 +223,18 @@ cv.line(comp_x, mid + 60, comp_x + str_w, mid + 60)
 cv.setStrokeColor(TEAL_DIM)
 cv.setLineWidth(0.5)
 cv.setDash(3, 6)
-cv.line(W/2 - 80, mid + 40, W/2 + 80, mid + 40)
+cv.line(price_cx - 80, mid + 40, price_cx + 80, mid + 40)
 cv.setDash()
 
-txt(cv, 'USD 22', W/2, mid - 12,
+txt(cv, 'USD 22', price_cx, mid - 12,
     'Helvetica-Bold', 52, GOLD, 'center')
 txt(cv, 'Pago unico  ·  Sin mensualidades  ·  Acceso de por vida',
-    W/2, mid - 32, 'Helvetica', 9, GRAY, 'center')
+    price_cx, mid - 32, 'Helvetica', 9, GRAY, 'center')
 
 cv.setFillColor(HexColor('#1f3a2e'))
-cv.roundRect(W/2 - 120, mid - 62, 240, 22, 6, fill=1, stroke=0)
+cv.roundRect(price_cx - 115, mid - 62, 230, 22, 6, fill=1, stroke=0)
 txt(cv, 'Soporte incluido  ·  Sin contrato  ·  Cancelable cuando quieras',
-    W/2, mid - 55, 'Helvetica', 7.5, HexColor('#4ade80'), 'center')
+    price_cx, mid - 55, 'Helvetica', 7.5, HexColor('#4ade80'), 'center')
 
 # ════════════════════════════════════════════════
 # 6. CTA FOOTER
@@ -226,7 +245,7 @@ cv.setStrokeColor(GOLD)
 cv.setLineWidth(2.5)
 cv.line(0, CTA_H, W, CTA_H)
 
-txt(cv, 'Escribeme — Te explico en 2 minutos como implementarlo',
+txt(cv, 'Escribeme. Te explico en 2 minutos como implementarlo.',
     W/2, CTA_H - 26, 'Helvetica-Bold', 12, DARK_NAVY, 'center')
 
 cv.setFillColor(DARK_NAVY)
@@ -244,4 +263,6 @@ txt(cv, 'KanbanPro — DMAIC + Kanban + Kaizen para veterinarias, gyms y negocio
 # GUARDAR
 # ─────────────────────────────────────────────
 cv.save()
+if os.path.exists(QR_PATH):
+    os.remove(QR_PATH)
 print(f'[OK] PDF generado: {OUTPUT}')
