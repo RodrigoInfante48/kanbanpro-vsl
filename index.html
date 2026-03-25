@@ -13,18 +13,13 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-M08G3EFVMM');
     </script>
     <title>KanbanPRO - Mobile-First Six Sigma</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -36,9 +31,7 @@
                         "background-dark": "#0f2320",
                         "accent-gold": "#FFB800",
                     },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
+                    fontFamily: { "display": ["Inter", "sans-serif"] },
                     borderRadius: {
                         "DEFAULT": "0.25rem",
                         "lg": "0.5rem",
@@ -50,38 +43,19 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
+        body { font-family: 'Inter', sans-serif; }
         .glass {
             background: rgba(0, 230, 199, 0.05);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(0, 230, 199, 0.2);
         }
-
-        .gold-glow {
-            text-shadow: 0 0 15px rgba(255, 184, 0, 0.4);
-        }
-
-        .teal-glow {
-            box-shadow: 0 0 30px rgba(0, 230, 199, 0.15);
-        }
-
+        .gold-glow { text-shadow: 0 0 15px rgba(255, 184, 0, 0.4); }
+        .teal-glow { box-shadow: 0 0 30px rgba(0, 230, 199, 0.15); }
         @keyframes gradient-flow {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
         .animated-gradient-border {
             background: linear-gradient(270deg, #00E5C8, #0f2320, #00E5C8, #0f2320);
             background-size: 400% 400%;
@@ -90,29 +64,30 @@
             border-radius: 1.25rem;
             display: inline-block;
         }
-
         .animated-price-border {
             background: linear-gradient(270deg, #00e6c7, #FFB800, #00e6c7, #FFB800);
             background-size: 400% 400%;
             animation: gradient-flow 8s ease infinite;
         }
+        .lang-btn {
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        }
+        .lang-btn:hover { background-color: rgba(0,230,199,0.15); }
+        .lang-btn.active-lang {
+            background-color: rgba(0,230,199,0.25);
+            border-color: #00e6c7;
+            color: #00e6c7;
+        }
     </style>
     <style>
-        body {
-            min-height: max(884px, 100dvh);
-        }
+        body { min-height: max(884px, 100dvh); }
     </style>
     <style>
         @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-
         .marquee-container {
             overflow: hidden;
             width: 100%;
@@ -120,13 +95,11 @@
             mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
-
         .marquee-content {
             display: flex;
             width: max-content;
             animation: marquee 30s linear infinite;
         }
-
         .marquee-item {
             display: flex;
             align-items: center;
@@ -136,59 +109,46 @@
     </style>
 </head>
 
-<body
-    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+
     <!-- Header / Language Flags -->
     <header class="w-full py-4 px-6 flex justify-center items-center gap-3 border-b border-primary/10">
         <div class="flex -space-x-2">
-            <div class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold"
-                style="">EN</div>
-            <div class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold"
-                style="">ES</div>
-            <div class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold"
-                style="">PT</div>
-            <div class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold"
-                style="">ZH</div>
-            <div class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold"
-                style="">FR</div>
-            <div class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold"
-                style="">DE</div>
-            <div class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold"
-                style="">JP</div>
-            <div class="w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold"
-                style="">KR</div>
+            <button onclick="setLanguage('en')" data-lang="en" class="lang-btn active-lang w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">EN</button>
+            <button onclick="setLanguage('es')" data-lang="es" class="lang-btn w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">ES</button>
+            <button onclick="setLanguage('pt')" data-lang="pt" class="lang-btn w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">PT</button>
+            <button onclick="setLanguage('zh')" data-lang="zh" class="lang-btn w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">ZH</button>
+            <button onclick="setLanguage('fr')" data-lang="fr" class="lang-btn w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">FR</button>
+            <button onclick="setLanguage('de')" data-lang="de" class="lang-btn w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">DE</button>
+            <button onclick="setLanguage('ja')" data-lang="ja" class="lang-btn w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">JP</button>
+            <button onclick="setLanguage('ko')" data-lang="ko" class="lang-btn w-8 h-8 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-[10px] font-bold">KR</button>
         </div>
     </header>
+
     <!-- Hero Section -->
     <section class="relative pt-12 pb-20 px-6 max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1] md:text-7xl lg:text-8xl leading-none"
-            style="">
+        <h1 data-i18n-html="hero-title" class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1] md:text-7xl lg:text-8xl leading-none" style="">
             Manage Six Sigma Projects From Your Phone — <span class="text-primary" style="">Or We Refund You.</span>
         </h1>
-        <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed" style="">
+        <p data-i18n="hero-subtitle" class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed" style="">
             The all-in-one mobile tool combining Kanban, DMAIC, and Kaizen. Used by 120+ professionals worldwide.
         </p>
         <!-- Phone Mockup -->
         <div class="relative mb-12 mx-auto perspective-1000 max-w-[360px]">
-            <div
-                class="rounded-[2.5rem] border-[8px] border-slate-800 bg-slate-900 aspect-[9/19.5] overflow-hidden teal-glow transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-2xl">
-                <img class="w-full h-full object-cover opacity-90"
-                    data-alt="Mobile app interface showing a clean Kanban board with teal accents"
-                    src="assets/image_1.png" style="" />
+            <div class="rounded-[2.5rem] border-[8px] border-slate-800 bg-slate-900 aspect-[9/19.5] overflow-hidden teal-glow transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+                <img class="w-full h-full object-cover opacity-90" data-alt="Mobile app interface showing a clean Kanban board with teal accents" src="assets/image_1.png" style="" />
             </div>
-            <!-- Decorative Glow behind phone -->
             <div class="absolute -inset-10 bg-primary/10 blur-[100px] -z-10 rounded-full"></div>
         </div>
-        <a class="inline-flex items-center justify-center px-10 py-5 bg-primary text-background-dark font-bold text-xl rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0,230,199,0.3)]"
-            href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322"
-            style="">
+        <a data-i18n="hero-cta" class="inline-flex items-center justify-center px-10 py-5 bg-primary text-background-dark font-bold text-xl rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0,230,199,0.3)]"
+            href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322" style="">
             Get Instant Access</a>
     </section>
+
     <!-- Social Proof / Trust Badges -->
     <section class="py-16 px-6 bg-slate-900/50">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-primary text-sm font-bold tracking-[0.2em] uppercase text-center mb-12" style="">
-                Testimonials</h2>
+            <h2 data-i18n="testimonials-heading" class="text-primary text-sm font-bold tracking-[0.2em] uppercase text-center mb-12" style="">Testimonials</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                 <!-- Testimonial 1 -->
                 <div class="glass p-6 rounded-xl border-primary/20">
@@ -199,8 +159,7 @@
                         <span class="material-symbols-outlined fill-1" style="">star</span>
                         <span class="material-symbols-outlined fill-1" style="">star</span>
                     </div>
-                    <p class="text-sm italic mb-6 text-slate-300" style="">The DMAIC templates on mobile are a game
-                        changer. I managed a whole factory floor audit from my palm.</p>
+                    <p data-i18n="testimonial-1" class="text-sm italic mb-6 text-slate-300" style="">The DMAIC templates on mobile are a game changer. I managed a whole factory floor audit from my palm.</p>
                     <p class="font-bold text-xs tracking-widest uppercase" style="">MARCUS REED</p>
                 </div>
                 <!-- Testimonial 2 -->
@@ -212,8 +171,7 @@
                         <span class="material-symbols-outlined fill-1" style="">star</span>
                         <span class="material-symbols-outlined fill-1" style="">star</span>
                     </div>
-                    <p class="text-sm italic mb-6 text-slate-300" style="">Finally, a Kaizen tool that doesn't feel like
-                        a desktop port. Smooth, fast, and very professional.</p>
+                    <p data-i18n="testimonial-2" class="text-sm italic mb-6 text-slate-300" style="">Finally, a Kaizen tool that doesn't feel like a desktop port. Smooth, fast, and very professional.</p>
                     <p class="font-bold text-xs tracking-widest uppercase" style="">SARAH CHEN</p>
                 </div>
                 <!-- Testimonial 3 -->
@@ -225,8 +183,7 @@
                         <span class="material-symbols-outlined fill-1" style="">star</span>
                         <span class="material-symbols-outlined fill-1" style="">star</span>
                     </div>
-                    <p class="text-sm italic mb-6 text-slate-300" style="">Six Sigma complexity made simple. I've cut my
-                        project logging time by 40%.</p>
+                    <p data-i18n="testimonial-3" class="text-sm italic mb-6 text-slate-300" style="">Six Sigma complexity made simple. I've cut my project logging time by 40%.</p>
                     <p class="font-bold text-xs tracking-widest uppercase" style="">DAVID OKORO</p>
                 </div>
                 <!-- Testimonial 4 -->
@@ -238,28 +195,18 @@
                         <span class="material-symbols-outlined fill-1" style="">star</span>
                         <span class="material-symbols-outlined fill-1" style="">star</span>
                     </div>
-                    <p class="text-sm italic mb-6 text-slate-300" style="">The best $22 I've spent on my career this
-                        year. The Notion blueprint alone is worth it.</p>
+                    <p data-i18n="testimonial-4" class="text-sm italic mb-6 text-slate-300" style="">The best $22 I've spent on my career this year. The Notion blueprint alone is worth it.</p>
                     <p class="font-bold text-xs tracking-widest uppercase" style="">ELENA VASI</p>
                 </div>
             </div>
             <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70">
-                <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary"
-                        style="">groups</span><span class="text-sm font-semibold uppercase tracking-wider" style="">120+
-                        users</span></div>
-                <div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-gold"
-                        style="">star</span><span class="text-sm font-semibold uppercase tracking-wider" style="">4.8
-                        rated</span></div>
-                <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary"
-                        style="">verified_user</span><span class="text-sm font-semibold uppercase tracking-wider"
-                        style="">8-day money back</span></div>
-                <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary"
-                        style="">smartphone</span><span class="text-sm font-semibold uppercase tracking-wider"
-                        style="">Mobile-first</span></div>
+                <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary" style="">groups</span><span data-i18n="badge-users" class="text-sm font-semibold uppercase tracking-wider" style="">120+ users</span></div>
+                <div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-gold" style="">star</span><span data-i18n="badge-rated" class="text-sm font-semibold uppercase tracking-wider" style="">4.8 rated</span></div>
+                <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary" style="">verified_user</span><span data-i18n="badge-guarantee" class="text-sm font-semibold uppercase tracking-wider" style="">8-day money back</span></div>
+                <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary" style="">smartphone</span><span data-i18n="badge-mobile" class="text-sm font-semibold uppercase tracking-wider" style="">Mobile-first</span></div>
             </div>
             <div class="mt-12 flex justify-center px-4 w-full">
-                <div
-                    class="animated-gradient-border w-full max-w-[280px] md:max-w-[320px] shadow-2xl shadow-primary/10">
+                <div class="animated-gradient-border w-full max-w-[280px] md:max-w-[320px] shadow-2xl shadow-primary/10">
                     <div class="bg-background-dark rounded-[calc(1.25rem-2px)] overflow-hidden">
                         <img alt="Trust Guarantees" class="w-full block" src="assets/image_2.png" style="" />
                     </div>
@@ -267,91 +214,80 @@
             </div>
         </div>
     </section>
+
     <!-- Benefits Section -->
     <section class="py-24 px-6 max-w-6xl mx-auto">
         <div class="max-w-3xl mx-auto">
             <div class="order-1 lg:order-2">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8" style="">Professional Efficiency <br /><span
-                        class="text-primary" style="">In Your Pocket</span></h2>
+                <h2 data-i18n-html="benefits-title" class="text-3xl md:text-4xl font-bold mb-8" style="">Professional Efficiency <br /><span class="text-primary" style="">In Your Pocket</span></h2>
                 <ul class="space-y-5">
                     <li class="flex items-start gap-4" style="">
-                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md"
-                            style="">check_circle</span>
+                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md" style="">check_circle</span>
                         <div>
-                            <p class="font-bold text-lg" style="">Continuous Process Improvement</p>
-                            <p class="text-slate-400" style="">Streamline workflows with integrated PDCA cycles.</p>
+                            <p data-i18n="benefit-1-title" class="font-bold text-lg" style="">Continuous Process Improvement</p>
+                            <p data-i18n="benefit-1-desc" class="text-slate-400" style="">Streamline workflows with integrated PDCA cycles.</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-4" style="">
-                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md"
-                            style="">check_circle</span>
+                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md" style="">check_circle</span>
                         <div>
-                            <p class="font-bold text-lg" style="">End-to-End Project Management</p>
-                            <p class="text-slate-400" style="">From problem statement to final control phase.</p>
+                            <p data-i18n="benefit-2-title" class="font-bold text-lg" style="">End-to-End Project Management</p>
+                            <p data-i18n="benefit-2-desc" class="text-slate-400" style="">From problem statement to final control phase.</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-4" style="">
-                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md"
-                            style="">check_circle</span>
+                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md" style="">check_circle</span>
                         <div>
-                            <p class="font-bold text-lg" style="">DMAIC Structured</p>
-                            <p class="text-slate-400" style="">Built-in stages for Define, Measure, Analyze, Improve,
-                                Control.</p>
+                            <p data-i18n="benefit-3-title" class="font-bold text-lg" style="">DMAIC Structured</p>
+                            <p data-i18n="benefit-3-desc" class="text-slate-400" style="">Built-in stages for Define, Measure, Analyze, Improve, Control.</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-4" style="">
-                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md"
-                            style="">check_circle</span>
+                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md" style="">check_circle</span>
                         <div>
-                            <p class="font-bold text-lg" style="">Visual Kanban Tools</p>
-                            <p class="text-slate-400" style="">Identify bottlenecks instantly with real-time visual
-                                flows.</p>
+                            <p data-i18n="benefit-4-title" class="font-bold text-lg" style="">Visual Kanban Tools</p>
+                            <p data-i18n="benefit-4-desc" class="text-slate-400" style="">Identify bottlenecks instantly with real-time visual flows.</p>
                         </div>
                     </li>
                     <li class="flex items-start gap-4" style="">
-                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md"
-                            style="">check_circle</span>
+                        <span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-md" style="">check_circle</span>
                         <div>
-                            <p class="font-bold text-lg" style="">Six Sigma (6σ) Framework</p>
-                            <p class="text-slate-400" style="">Advanced tools for reducing variation and defects.</p>
+                            <p data-i18n="benefit-5-title" class="font-bold text-lg" style="">Six Sigma (6σ) Framework</p>
+                            <p data-i18n="benefit-5-desc" class="text-slate-400" style="">Advanced tools for reducing variation and defects.</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
     </section>
+
     <!-- What You Get -->
     <section class="py-24 px-6 bg-slate-900/30">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" style="">The Full <span class="text-primary"
-                    style="">Kanbanpro</span> Suite</h2>
+            <h2 data-i18n-html="suite-title" class="text-3xl md:text-4xl font-bold text-center mb-12" style="">The Full <span class="text-primary" style="">Kanbanpro</span> Suite</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="glass p-8 rounded-xl border-l-4 border-l-primary">
                     <span class="material-symbols-outlined text-4xl text-primary mb-4" style="">view_kanban</span>
-                    <h3 class="text-xl font-bold mb-2" style="">Dynamic Kanban</h3>
-                    <p class="text-slate-400 text-sm" style="">Adaptive columns that scale with project complexity.</p>
+                    <h3 data-i18n="suite-card-1-title" class="text-xl font-bold mb-2" style="">Dynamic Kanban</h3>
+                    <p data-i18n="suite-card-1-desc" class="text-slate-400 text-sm" style="">Adaptive columns that scale with project complexity.</p>
                 </div>
                 <div class="glass p-8 rounded-xl border-l-4 border-l-primary">
                     <span class="material-symbols-outlined text-4xl text-primary mb-4" style="">account_tree</span>
-                    <h3 class="text-xl font-bold mb-2" style="">DMAIC Roadmap</h3>
-                    <p class="text-slate-400 text-sm" style="">Step-by-step guidance through the core Six Sigma
-                        methodology.</p>
+                    <h3 data-i18n="suite-card-2-title" class="text-xl font-bold mb-2" style="">DMAIC Roadmap</h3>
+                    <p data-i18n="suite-card-2-desc" class="text-slate-400 text-sm" style="">Step-by-step guidance through the core Six Sigma methodology.</p>
                 </div>
                 <div class="glass p-8 rounded-xl border-l-4 border-l-primary">
                     <span class="material-symbols-outlined text-4xl text-primary mb-4" style="">trending_up</span>
-                    <h3 class="text-xl font-bold mb-2" style="">Kaizen Logs</h3>
-                    <p class="text-slate-400 text-sm" style="">Capture micro-improvements instantly as they happen on
-                        the floor.</p>
+                    <h3 data-i18n="suite-card-3-title" class="text-xl font-bold mb-2" style="">Kaizen Logs</h3>
+                    <p data-i18n="suite-card-3-desc" class="text-slate-400 text-sm" style="">Capture micro-improvements instantly as they happen on the floor.</p>
                 </div>
                 <div class="flex flex-col items-center mb-12 mt-8 col-span-full">
-                    <div class="bg-accent-gold text-background-dark text-[10px] md:text-xs font-black px-4 py-1.5 uppercase tracking-[0.2em] mb-4 shadow-lg"
-                        style="">
+                    <div data-i18n="limited-offer-badge" class="bg-accent-gold text-background-dark text-[10px] md:text-xs font-black px-4 py-1.5 uppercase tracking-[0.2em] mb-4 shadow-lg" style="">
                         LIMITED-TIME OFFER
                     </div>
                     <div class="p-[2px] animated-price-border rounded-lg shadow-2xl shadow-primary/20">
                         <div class="bg-background-dark px-8 py-4 md:px-12 md:py-6 rounded-[calc(0.5rem-2px)]">
-                            <h2 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter text-center"
-                                style="">
+                            <h2 data-i18n="free-bonuses" class="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter text-center" style="">
                                 FREE EXCLUSIVE BONUSES
                             </h2>
                         </div>
@@ -360,27 +296,25 @@
                 </div>
                 <div class="glass p-8 rounded-xl border-l-4 border-l-accent-gold">
                     <span class="material-symbols-outlined text-4xl text-accent-gold mb-4" style="">auto_awesome</span>
-                    <h3 class="text-xl font-bold mb-2" style="">Visual Workspace</h3>
-                    <p class="text-slate-400 text-sm" style="">Bonus 1: Custom dashboard with drag-and-drop analytics.
-                    </p>
+                    <h3 data-i18n="bonus-1-title" class="text-xl font-bold mb-2" style="">Visual Workspace</h3>
+                    <p data-i18n="bonus-1-desc" class="text-slate-400 text-sm" style="">Bonus 1: Custom dashboard with drag-and-drop analytics.</p>
                 </div>
                 <div class="glass p-8 rounded-xl border-l-4 border-l-accent-gold lg:col-span-2">
                     <span class="material-symbols-outlined text-4xl text-accent-gold mb-4" style="">data_table</span>
-                    <h3 class="text-xl font-bold mb-2" style="">Notion Blueprint</h3>
-                    <p class="text-slate-400 text-sm" style="">Bonus 2: Full organizational template for syncing mobile
-                        data to your desktop workspace.</p>
+                    <h3 data-i18n="bonus-2-title" class="text-xl font-bold mb-2" style="">Notion Blueprint</h3>
+                    <p data-i18n="bonus-2-desc" class="text-slate-400 text-sm" style="">Bonus 2: Full organizational template for syncing mobile data to your desktop workspace.</p>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Pricing Section -->
     <section class="py-24 px-6 max-w-4xl mx-auto" id="pricing">
         <div class="text-center mb-12">
             <p class="text-accent-gold font-bold mb-4 flex items-center justify-center gap-2" style="">
-                <span class="material-symbols-outlined" style="">warning</span>Only 28 units available per month
+                <span class="material-symbols-outlined" style="">warning</span><span data-i18n="pricing-units">Only 28 units available per month</span>
             </p>
-            <div
-                class="inline-flex items-center gap-4 bg-slate-900 px-6 py-3 rounded-full border border-accent-gold/30">
+            <div class="inline-flex items-center gap-4 bg-slate-900 px-6 py-3 rounded-full border border-accent-gold/30">
                 <span class="text-slate-500 line-through text-lg font-medium" style="">$124.90/mo</span>
                 <span class="material-symbols-outlined text-slate-500" style="">arrow_forward</span>
                 <span class="text-accent-gold text-3xl font-black gold-glow" style="">$22 ONE TIME</span>
@@ -389,51 +323,41 @@
         <!-- Countdown -->
         <div class="flex justify-center gap-4 mb-16">
             <div class="text-center">
-                <div class="bg-slate-900 border border-slate-800 rounded-lg w-16 h-16 flex items-center justify-center text-2xl font-black text-accent-gold"
-                    id="timer-hours" style="">00</div>
-                <p class="text-[10px] mt-1 uppercase font-bold text-slate-500" style="">Hours</p>
+                <div class="bg-slate-900 border border-slate-800 rounded-lg w-16 h-16 flex items-center justify-center text-2xl font-black text-accent-gold" id="timer-hours" style="">00</div>
+                <p data-i18n="timer-hours" class="text-[10px] mt-1 uppercase font-bold text-slate-500" style="">Hours</p>
             </div>
             <div class="text-2xl font-black self-center pb-4 text-slate-700" style="">:</div>
             <div class="text-center">
-                <div class="bg-slate-900 border border-slate-800 rounded-lg w-16 h-16 flex items-center justify-center text-2xl font-black text-accent-gold"
-                    id="timer-minutes" style="">10</div>
-                <p class="text-[10px] mt-1 uppercase font-bold text-slate-500" style="">Minutes</p>
+                <div class="bg-slate-900 border border-slate-800 rounded-lg w-16 h-16 flex items-center justify-center text-2xl font-black text-accent-gold" id="timer-minutes" style="">10</div>
+                <p data-i18n="timer-minutes" class="text-[10px] mt-1 uppercase font-bold text-slate-500" style="">Minutes</p>
             </div>
             <div class="text-2xl font-black self-center pb-4 text-slate-700" style="">:</div>
             <div class="text-center">
-                <div class="bg-slate-900 border border-slate-800 rounded-lg w-16 h-16 flex items-center justify-center text-2xl font-black text-accent-gold"
-                    id="timer-seconds" style="">42</div>
-                <p class="text-[10px] mt-1 uppercase font-bold text-slate-500" style="">Seconds</p>
+                <div class="bg-slate-900 border border-slate-800 rounded-lg w-16 h-16 flex items-center justify-center text-2xl font-black text-accent-gold" id="timer-seconds" style="">42</div>
+                <p data-i18n="timer-seconds" class="text-[10px] mt-1 uppercase font-bold text-slate-500" style="">Seconds</p>
             </div>
         </div>
-        <div
-            class="relative p-1 rounded-[2rem] bg-gradient-to-br from-primary via-primary/50 to-accent-gold animated-price-border">
+        <div class="relative p-1 rounded-[2rem] bg-gradient-to-br from-primary via-primary/50 to-accent-gold animated-price-border">
             <div class="bg-background-dark rounded-[1.8rem] p-8 md:p-12">
-                <h3 class="text-2xl font-bold mb-8 border-b border-white/10 pb-4" style="">Lifetime Access Pass</h3>
+                <h3 data-i18n="pricing-plan-title" class="text-2xl font-bold mb-8 border-b border-white/10 pb-4" style="">Lifetime Access Pass</h3>
                 <ul class="space-y-4 mb-10">
-                    <li class="flex items-center gap-3" style=""><span class="material-symbols-outlined text-primary"
-                            style="">done_all</span> All Kanbanpro Features</li>
-                    <li class="flex items-center gap-3" style=""><span class="material-symbols-outlined text-primary"
-                            style="">done_all</span> Lifetime Updates &amp; Security</li>
-                    <li class="flex items-center gap-3" style=""><span class="material-symbols-outlined text-primary"
-                            style="">done_all</span> Multi-Device Sync</li>
-                    <li class="flex items-center gap-3 font-bold text-accent-gold" style=""><span
-                            class="material-symbols-outlined" style="">stars</span> Bonus: Visual Workspace</li>
-                    <li class="flex items-center gap-3 font-bold text-accent-gold" style=""><span
-                            class="material-symbols-outlined" style="">stars</span> Bonus: Notion Blueprint</li>
+                    <li class="flex items-center gap-3" style=""><span class="material-symbols-outlined text-primary" style="">done_all</span> <span data-i18n="pricing-feature-1">All Kanbanpro Features</span></li>
+                    <li class="flex items-center gap-3" style=""><span class="material-symbols-outlined text-primary" style="">done_all</span> <span data-i18n="pricing-feature-2">Lifetime Updates &amp; Security</span></li>
+                    <li class="flex items-center gap-3" style=""><span class="material-symbols-outlined text-primary" style="">done_all</span> <span data-i18n="pricing-feature-3">Multi-Device Sync</span></li>
+                    <li class="flex items-center gap-3 font-bold text-accent-gold" style=""><span class="material-symbols-outlined" style="">stars</span> <span data-i18n="pricing-bonus-1">Bonus: Visual Workspace</span></li>
+                    <li class="flex items-center gap-3 font-bold text-accent-gold" style=""><span class="material-symbols-outlined" style="">stars</span> <span data-i18n="pricing-bonus-2">Bonus: Notion Blueprint</span></li>
                 </ul>
-                <a class="w-full py-6 bg-primary text-background-dark font-black text-xl md:text-2xl rounded-xl hover:bg-primary/90 transition-all shadow-xl uppercase tracking-tight flex items-center justify-center"
-                    href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322"
-                    style="">       GET INSTANT ACCESS                       $22 ONE TIME
+                <a data-i18n="pricing-cta" class="w-full py-6 bg-primary text-background-dark font-black text-xl md:text-2xl rounded-xl hover:bg-primary/90 transition-all shadow-xl uppercase tracking-tight flex items-center justify-center"
+                    href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322" style="">
+                    GET INSTANT ACCESS — $22 ONE TIME
                 </a>
                 <div class="flex items-center justify-center gap-4 mt-6 opacity-60">
                     <span class="material-symbols-outlined text-sm" style="">lock</span>
-                    <p class="text-xs font-medium uppercase tracking-widest" style="">Secure 256-bit encrypted checkout
-                    </p>
+                    <p data-i18n="pricing-secure" class="text-xs font-medium uppercase tracking-widest" style="">Secure 256-bit encrypted checkout</p>
                 </div>
             </div>
-        </div><a
-            class="block mt-16 pt-8 border-t border-white/5 marquee-container text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500"
+        </div>
+        <a class="block mt-16 pt-8 border-t border-white/5 marquee-container text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500"
             href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322">
             <div class="marquee-content">
                 <div class="marquee-item"><span>Debit/Credit Cards</span>
@@ -453,96 +377,565 @@
             </div>
         </a>
     </section>
+
     <!-- Urgency Banner -->
     <section class="bg-accent-gold py-10 px-6 overflow-hidden relative">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
             <div>
-                <h4 class="text-background-dark font-black text-3xl md:text-4xl italic" style="">LIMITED OFFER</h4>
-                <p class="text-background-dark/80 font-bold" style="">Offer ends today or when the 28 monthly slots are
-                    filled.</p>
+                <h4 data-i18n="urgency-title" class="text-background-dark font-black text-3xl md:text-4xl italic" style="">LIMITED OFFER</h4>
+                <p data-i18n="urgency-desc" class="text-background-dark/80 font-bold" style="">Offer ends today or when the 28 monthly slots are filled.</p>
             </div>
             <a class="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:scale-105 transition-transform shadow-lg"
-                href="https://api.whatsapp.com/send/?phone=573209974750&amp;text=Kanbanpro&amp;type=phone_number&amp;app_absent=0"
-                style="">
-                <svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24">
-                    <path
-                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z">
-                    </path>
+                href="https://api.whatsapp.com/send/?phone=573209974750&amp;text=Kanbanpro&amp;type=phone_number&amp;app_absent=0" style="">
+                <svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
                 </svg>
-                Activate Free Trial on WhatsApp
+                <span data-i18n="urgency-cta">Activate Free Trial on WhatsApp</span>
             </a>
         </div>
-        <!-- Decorative subtle pattern overlay -->
         <div class="absolute inset-0 opacity-10 pointer-events-none"
-            style="background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.4) 1px, transparent 0); background-size: 24px 24px;">
-        </div>
+            style="background-image: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.4) 1px, transparent 0); background-size: 24px 24px;"></div>
     </section>
+
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-primary/20 bg-background-dark">
         <div class="max-w-6xl mx-auto flex flex-col items-center">
-            <h2 class="text-white text-2xl font-black mb-8 tracking-tighter" style="">Kanban<font color="#00e6c7">pro
-                </font>
-            </h2>
+            <h2 class="text-white text-2xl font-black mb-8 tracking-tighter" style="">Kanban<font color="#00e6c7">pro</font></h2>
             <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8">
-                <a class="text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
-                    href="https://linktr.ee/DailyDuty" style="">Links</a>
-                <a class="text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
-                    href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322"
-                    style="">Get it now</a>
-                <a class="text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
-                    href="https://api.whatsapp.com/send/?phone=573209974750&amp;text=Kanbanpro&amp;type=phone_number&amp;app_absent=0"
-                    style="">WhatsApp</a>
-                <a class="text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
-                    href="https://azure-ferry-3c3.notion.site/PREGUNTAS-FRECUENTES-15e4f515cfb080b0b635d0779fab3673"
-                    style="">FAQ</a>
+                <a class="text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest" href="https://linktr.ee/DailyDuty" style="">Links</a>
+                <a class="text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest" href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322" style="">Get it now</a>
+                <a class="text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest" href="https://api.whatsapp.com/send/?phone=573209974750&amp;text=Kanbanpro&amp;type=phone_number&amp;app_absent=0" style="">WhatsApp</a>
+                <a class="text-slate-400 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest" href="https://azure-ferry-3c3.notion.site/PREGUNTAS-FRECUENTES-15e4f515cfb080b0b635d0779fab3673" style="">FAQ</a>
             </nav>
-            <p class="text-slate-600 text-xs text-center" style="">
-                © 2024 KanbanPRO. All rights reserved. Six Sigma, DMAIC, and Kaizen are industry methodologies used for
-                organizational improvement.
+            <p data-i18n="footer-copyright" class="text-slate-600 text-xs text-center" style="">
+                © 2024 KanbanPRO. All rights reserved. Six Sigma, DMAIC, and Kaizen are industry methodologies used for organizational improvement.
             </p>
         </div>
     </footer>
-    <!-- Sticky Bar (Visible after scrolling) -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 z-50 transform translate-y-full md:translate-y-0 md:opacity-0 md:pointer-events-none"
-        id="sticky-cta">
-        <div
-            class="max-w-md mx-auto bg-slate-900/90 backdrop-blur-md p-3 rounded-full border border-primary/30 flex items-center justify-between shadow-2xl">
+
+    <!-- Sticky Bar -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 z-50 transform translate-y-full md:translate-y-0 md:opacity-0 md:pointer-events-none" id="sticky-cta">
+        <div class="max-w-md mx-auto bg-slate-900/90 backdrop-blur-md p-3 rounded-full border border-primary/30 flex items-center justify-between shadow-2xl">
             <div class="pl-4">
                 <p class="text-xs font-bold text-primary" style="">KanbanPRO</p>
-                <p class="text-white font-black" style="">$22 ONE-TIME</p>
+                <p data-i18n="sticky-price" class="text-white font-black" style="">$22 ONE-TIME</p>
             </div>
-            <a class="bg-primary text-background-dark px-6 py-2 rounded-full font-bold text-sm"
-                href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322"
-                style="">CLAIM NOW</a>
+            <a data-i18n="sticky-cta" class="bg-primary text-background-dark px-6 py-2 rounded-full font-bold text-sm"
+                href="https://pay.hotmart.com/I97237386O?off=fam1ymv5&amp;_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&amp;bid=1739874351322" style="">CLAIM NOW</a>
         </div>
     </div>
+
+    <!-- Timer Script -->
     <script>(function () {
-                let timeLeft = 1800; // set to 30 minutes (1800 seconds)
-                const hoursEl = document.getElementById('timer-hours');
-                const minutesEl = document.getElementById('timer-minutes');
-                const secondsEl = document.getElementById('timer-seconds');
-                const redirectUrl = "https://pay.hotmart.com/I97237386O?off=fam1ymv5&_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&bid=1739874351322";
+        let timeLeft = 1800;
+        const hoursEl = document.getElementById('timer-hours');
+        const minutesEl = document.getElementById('timer-minutes');
+        const secondsEl = document.getElementById('timer-seconds');
+        const redirectUrl = "https://pay.hotmart.com/I97237386O?off=fam1ymv5&_hi=eyJjaWQiOiIxNzMwMTY0MzA3ODA4ODU5MjE5Njk2OTM0NjM4MDAwIiwiYmlkIjoiMTczMDE2NDMwNzgwODg1OTIxOTY5NjkzNDYzODAwMCIsInNpZCI6ImNiZTdiYmE1N2QwZTRhYjVhYTFiNWIwYjFiYTVjODFlIn0=.1739874347679&bid=1739874351322";
+        function updateTimer() {
+            const h = Math.floor(timeLeft / 3600);
+            const m = Math.floor((timeLeft % 3600) / 60);
+            const s = timeLeft % 60;
+            if (hoursEl) hoursEl.textContent = h.toString().padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = m.toString().padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = s.toString().padStart(2, '0');
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                window.location.href = redirectUrl;
+            } else { timeLeft--; }
+        }
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+    })();</script>
 
-                function updateTimer() {
-                    const h = Math.floor(timeLeft / 3600);
-                    const m = Math.floor((timeLeft % 3600) / 60);
-                    const s = timeLeft % 60;
+    <!-- i18n Script -->
+    <script>
+    const translations = {
+        en: {
+            'hero-title': 'Manage Six Sigma Projects From Your Phone — <span class="text-primary">Or We Refund You.</span>',
+            'hero-subtitle': 'The all-in-one mobile tool combining Kanban, DMAIC, and Kaizen. Used by 120+ professionals worldwide.',
+            'hero-cta': 'Get Instant Access',
+            'testimonials-heading': 'Testimonials',
+            'testimonial-1': 'The DMAIC templates on mobile are a game changer. I managed a whole factory floor audit from my palm.',
+            'testimonial-2': "Finally, a Kaizen tool that doesn't feel like a desktop port. Smooth, fast, and very professional.",
+            'testimonial-3': "Six Sigma complexity made simple. I've cut my project logging time by 40%.",
+            'testimonial-4': "The best $22 I've spent on my career this year. The Notion blueprint alone is worth it.",
+            'badge-users': '120+ users',
+            'badge-rated': '4.8 rated',
+            'badge-guarantee': '8-day money back',
+            'badge-mobile': 'Mobile-first',
+            'benefits-title': 'Professional Efficiency <br /><span class="text-primary">In Your Pocket</span>',
+            'benefit-1-title': 'Continuous Process Improvement',
+            'benefit-1-desc': 'Streamline workflows with integrated PDCA cycles.',
+            'benefit-2-title': 'End-to-End Project Management',
+            'benefit-2-desc': 'From problem statement to final control phase.',
+            'benefit-3-title': 'DMAIC Structured',
+            'benefit-3-desc': 'Built-in stages for Define, Measure, Analyze, Improve, Control.',
+            'benefit-4-title': 'Visual Kanban Tools',
+            'benefit-4-desc': 'Identify bottlenecks instantly with real-time visual flows.',
+            'benefit-5-title': 'Six Sigma (6σ) Framework',
+            'benefit-5-desc': 'Advanced tools for reducing variation and defects.',
+            'suite-title': 'The Full <span class="text-primary">Kanbanpro</span> Suite',
+            'suite-card-1-title': 'Dynamic Kanban',
+            'suite-card-1-desc': 'Adaptive columns that scale with project complexity.',
+            'suite-card-2-title': 'DMAIC Roadmap',
+            'suite-card-2-desc': 'Step-by-step guidance through the core Six Sigma methodology.',
+            'suite-card-3-title': 'Kaizen Logs',
+            'suite-card-3-desc': 'Capture micro-improvements instantly as they happen on the floor.',
+            'limited-offer-badge': 'LIMITED-TIME OFFER',
+            'free-bonuses': 'FREE EXCLUSIVE BONUSES',
+            'bonus-1-title': 'Visual Workspace',
+            'bonus-1-desc': 'Bonus 1: Custom dashboard with drag-and-drop analytics.',
+            'bonus-2-title': 'Notion Blueprint',
+            'bonus-2-desc': 'Bonus 2: Full organizational template for syncing mobile data to your desktop workspace.',
+            'pricing-units': 'Only 28 units available per month',
+            'timer-hours': 'Hours',
+            'timer-minutes': 'Minutes',
+            'timer-seconds': 'Seconds',
+            'pricing-plan-title': 'Lifetime Access Pass',
+            'pricing-feature-1': 'All Kanbanpro Features',
+            'pricing-feature-2': 'Lifetime Updates & Security',
+            'pricing-feature-3': 'Multi-Device Sync',
+            'pricing-bonus-1': 'Bonus: Visual Workspace',
+            'pricing-bonus-2': 'Bonus: Notion Blueprint',
+            'pricing-cta': 'GET INSTANT ACCESS — $22 ONE TIME',
+            'pricing-secure': 'Secure 256-bit encrypted checkout',
+            'urgency-title': 'LIMITED OFFER',
+            'urgency-desc': 'Offer ends today or when the 28 monthly slots are filled.',
+            'urgency-cta': 'Activate Free Trial on WhatsApp',
+            'sticky-price': '$22 ONE-TIME',
+            'sticky-cta': 'CLAIM NOW',
+            'footer-copyright': '© 2024 KanbanPRO. All rights reserved. Six Sigma, DMAIC, and Kaizen are industry methodologies used for organizational improvement.',
+        },
+        es: {
+            'hero-title': 'Gestiona Proyectos Six Sigma Desde Tu Teléfono — <span class="text-primary">O Te Devolvemos el Dinero.</span>',
+            'hero-subtitle': 'La herramienta móvil todo en uno que combina Kanban, DMAIC y Kaizen. Usada por más de 120 profesionales en todo el mundo.',
+            'hero-cta': 'Obtener Acceso Inmediato',
+            'testimonials-heading': 'Testimonios',
+            'testimonial-1': 'Las plantillas DMAIC en móvil son revolucionarias. Gestioné toda una auditoría de planta desde mi mano.',
+            'testimonial-2': 'Por fin, una herramienta Kaizen que no parece un puerto de escritorio. Fluida, rápida y muy profesional.',
+            'testimonial-3': 'La complejidad de Six Sigma simplificada. He reducido mi tiempo de registro de proyectos en un 40%.',
+            'testimonial-4': 'Los mejores $22 que he invertido en mi carrera este año. El blueprint de Notion solo ya vale la pena.',
+            'badge-users': '120+ usuarios',
+            'badge-rated': '4.8 de valoración',
+            'badge-guarantee': 'Devolución en 8 días',
+            'badge-mobile': 'Móvil primero',
+            'benefits-title': 'Eficiencia Profesional <br /><span class="text-primary">En Tu Bolsillo</span>',
+            'benefit-1-title': 'Mejora Continua de Procesos',
+            'benefit-1-desc': 'Optimiza flujos de trabajo con ciclos PDCA integrados.',
+            'benefit-2-title': 'Gestión de Proyectos Completa',
+            'benefit-2-desc': 'Desde el planteamiento del problema hasta la fase de control final.',
+            'benefit-3-title': 'Estructura DMAIC',
+            'benefit-3-desc': 'Etapas integradas para Definir, Medir, Analizar, Mejorar y Controlar.',
+            'benefit-4-title': 'Herramientas Kanban Visuales',
+            'benefit-4-desc': 'Identifica cuellos de botella al instante con flujos visuales en tiempo real.',
+            'benefit-5-title': 'Marco Six Sigma (6σ)',
+            'benefit-5-desc': 'Herramientas avanzadas para reducir variación y defectos.',
+            'suite-title': 'El Paquete Completo <span class="text-primary">Kanbanpro</span>',
+            'suite-card-1-title': 'Kanban Dinámico',
+            'suite-card-1-desc': 'Columnas adaptativas que escalan con la complejidad del proyecto.',
+            'suite-card-2-title': 'Hoja de Ruta DMAIC',
+            'suite-card-2-desc': 'Guía paso a paso a través de la metodología central Six Sigma.',
+            'suite-card-3-title': 'Registros Kaizen',
+            'suite-card-3-desc': 'Captura micro-mejoras instantáneamente mientras ocurren en el piso.',
+            'limited-offer-badge': 'OFERTA POR TIEMPO LIMITADO',
+            'free-bonuses': 'BONOS EXCLUSIVOS GRATIS',
+            'bonus-1-title': 'Espacio de Trabajo Visual',
+            'bonus-1-desc': 'Bono 1: Panel personalizado con análisis de arrastrar y soltar.',
+            'bonus-2-title': 'Plano Notion',
+            'bonus-2-desc': 'Bono 2: Plantilla organizacional completa para sincronizar datos móviles con tu espacio de trabajo de escritorio.',
+            'pricing-units': 'Solo 28 unidades disponibles por mes',
+            'timer-hours': 'Horas',
+            'timer-minutes': 'Minutos',
+            'timer-seconds': 'Segundos',
+            'pricing-plan-title': 'Pase de Acceso de por Vida',
+            'pricing-feature-1': 'Todas las Funciones de Kanbanpro',
+            'pricing-feature-2': 'Actualizaciones y Seguridad de por Vida',
+            'pricing-feature-3': 'Sincronización Multi-Dispositivo',
+            'pricing-bonus-1': 'Bono: Espacio de Trabajo Visual',
+            'pricing-bonus-2': 'Bono: Plano Notion',
+            'pricing-cta': 'OBTENER ACCESO INMEDIATO — $22 ÚNICO PAGO',
+            'pricing-secure': 'Pago seguro encriptado con 256 bits',
+            'urgency-title': 'OFERTA LIMITADA',
+            'urgency-desc': 'La oferta termina hoy o cuando se llenen los 28 cupos mensuales.',
+            'urgency-cta': 'Activar Prueba Gratis en WhatsApp',
+            'sticky-price': '$22 ÚNICO PAGO',
+            'sticky-cta': 'OBTENER AHORA',
+            'footer-copyright': '© 2024 KanbanPRO. Todos los derechos reservados. Six Sigma, DMAIC y Kaizen son metodologías de la industria utilizadas para la mejora organizacional.',
+        },
+        pt: {
+            'hero-title': 'Gerencie Projetos Six Sigma pelo Celular — <span class="text-primary">Ou Te Devolvemos o Dinheiro.</span>',
+            'hero-subtitle': 'A ferramenta móvel tudo-em-um combinando Kanban, DMAIC e Kaizen. Usada por mais de 120 profissionais no mundo.',
+            'hero-cta': 'Obter Acesso Imediato',
+            'testimonials-heading': 'Depoimentos',
+            'testimonial-1': 'Os modelos DMAIC no celular são revolucionários. Gerenciei toda uma auditoria de fábrica pela palma da mão.',
+            'testimonial-2': 'Finalmente, uma ferramenta Kaizen que não parece um porte de desktop. Fluida, rápida e muito profissional.',
+            'testimonial-3': 'Complexidade do Six Sigma simplificada. Reduzi meu tempo de registro de projetos em 40%.',
+            'testimonial-4': 'Os melhores $22 que investi na minha carreira este ano. O blueprint do Notion sozinho já vale a pena.',
+            'badge-users': '120+ usuários',
+            'badge-rated': 'Avaliado 4.8',
+            'badge-guarantee': 'Reembolso em 8 dias',
+            'badge-mobile': 'Mobile-first',
+            'benefits-title': 'Eficiência Profissional <br /><span class="text-primary">No Seu Bolso</span>',
+            'benefit-1-title': 'Melhoria Contínua de Processos',
+            'benefit-1-desc': 'Otimize fluxos de trabalho com ciclos PDCA integrados.',
+            'benefit-2-title': 'Gestão de Projetos Completa',
+            'benefit-2-desc': 'Do enunciado do problema à fase de controle final.',
+            'benefit-3-title': 'Estruturado em DMAIC',
+            'benefit-3-desc': 'Etapas integradas para Definir, Medir, Analisar, Melhorar e Controlar.',
+            'benefit-4-title': 'Ferramentas Kanban Visuais',
+            'benefit-4-desc': 'Identifique gargalos instantaneamente com fluxos visuais em tempo real.',
+            'benefit-5-title': 'Framework Six Sigma (6σ)',
+            'benefit-5-desc': 'Ferramentas avançadas para reduzir variação e defeitos.',
+            'suite-title': 'O Pacote Completo <span class="text-primary">Kanbanpro</span>',
+            'suite-card-1-title': 'Kanban Dinâmico',
+            'suite-card-1-desc': 'Colunas adaptativas que escalam com a complexidade do projeto.',
+            'suite-card-2-title': 'Roteiro DMAIC',
+            'suite-card-2-desc': 'Guia passo a passo pela metodologia central do Six Sigma.',
+            'suite-card-3-title': 'Registros Kaizen',
+            'suite-card-3-desc': 'Capture micro-melhorias instantaneamente enquanto acontecem no chão de fábrica.',
+            'limited-offer-badge': 'OFERTA POR TEMPO LIMITADO',
+            'free-bonuses': 'BÔNUS EXCLUSIVOS GRÁTIS',
+            'bonus-1-title': 'Área de Trabalho Visual',
+            'bonus-1-desc': 'Bônus 1: Painel personalizado com análises de arrastar e soltar.',
+            'bonus-2-title': 'Blueprint Notion',
+            'bonus-2-desc': 'Bônus 2: Template organizacional completo para sincronizar dados do celular com seu espaço de trabalho no desktop.',
+            'pricing-units': 'Apenas 28 unidades disponíveis por mês',
+            'timer-hours': 'Horas',
+            'timer-minutes': 'Minutos',
+            'timer-seconds': 'Segundos',
+            'pricing-plan-title': 'Passe de Acesso Vitalício',
+            'pricing-feature-1': 'Todos os Recursos do Kanbanpro',
+            'pricing-feature-2': 'Atualizações e Segurança Vitalícias',
+            'pricing-feature-3': 'Sincronização Multi-Dispositivo',
+            'pricing-bonus-1': 'Bônus: Área de Trabalho Visual',
+            'pricing-bonus-2': 'Bônus: Blueprint Notion',
+            'pricing-cta': 'OBTER ACESSO IMEDIATO — $22 PAGAMENTO ÚNICO',
+            'pricing-secure': 'Checkout seguro com criptografia de 256 bits',
+            'urgency-title': 'OFERTA LIMITADA',
+            'urgency-desc': 'A oferta termina hoje ou quando as 28 vagas mensais forem preenchidas.',
+            'urgency-cta': 'Ativar Teste Grátis no WhatsApp',
+            'sticky-price': '$22 PAGAMENTO ÚNICO',
+            'sticky-cta': 'RESGATAR AGORA',
+            'footer-copyright': '© 2024 KanbanPRO. Todos os direitos reservados. Six Sigma, DMAIC e Kaizen são metodologias da indústria usadas para melhoria organizacional.',
+        },
+        zh: {
+            'hero-title': '随时随地用手机管理六西格玛项目 — <span class="text-primary">否则全额退款。</span>',
+            'hero-subtitle': '集看板、DMAIC和改善于一体的移动工具。全球120+专业人士正在使用。',
+            'hero-cta': '立即获取访问权限',
+            'testimonials-heading': '用户评价',
+            'testimonial-1': '手机上的DMAIC模板改变了游戏规则。我用手掌管理了整个工厂审计。',
+            'testimonial-2': '终于有了一款不像桌面版移植的改善工具。流畅、快速、非常专业。',
+            'testimonial-3': '六西格玛的复杂性变得简单了。我把项目记录时间减少了40%。',
+            'testimonial-4': '这是我今年在职业发展上花得最值的22美元。仅Notion蓝图就物超所值。',
+            'badge-users': '120+用户',
+            'badge-rated': '评分4.8',
+            'badge-guarantee': '8天退款保证',
+            'badge-mobile': '移动优先',
+            'benefits-title': '专业效率 <br /><span class="text-primary">装进口袋</span>',
+            'benefit-1-title': '持续流程改进',
+            'benefit-1-desc': '通过集成的PDCA循环优化工作流程。',
+            'benefit-2-title': '端到端项目管理',
+            'benefit-2-desc': '从问题陈述到最终控制阶段。',
+            'benefit-3-title': 'DMAIC结构化',
+            'benefit-3-desc': '内置定义、测量、分析、改进、控制各阶段。',
+            'benefit-4-title': '可视化看板工具',
+            'benefit-4-desc': '通过实时可视流即时识别瓶颈。',
+            'benefit-5-title': '六西格玛(6σ)框架',
+            'benefit-5-desc': '减少变异和缺陷的高级工具。',
+            'suite-title': '完整的 <span class="text-primary">Kanbanpro</span> 套件',
+            'suite-card-1-title': '动态看板',
+            'suite-card-1-desc': '随项目复杂性扩展的自适应列。',
+            'suite-card-2-title': 'DMAIC路线图',
+            'suite-card-2-desc': '六西格玛核心方法论的分步指导。',
+            'suite-card-3-title': '改善日志',
+            'suite-card-3-desc': '在现场即时捕捉微改进。',
+            'limited-offer-badge': '限时优惠',
+            'free-bonuses': '免费专属奖励',
+            'bonus-1-title': '可视化工作区',
+            'bonus-1-desc': '奖励1：带拖放分析的自定义仪表板。',
+            'bonus-2-title': 'Notion蓝图',
+            'bonus-2-desc': '奖励2：完整组织模板，将手机数据同步到桌面工作区。',
+            'pricing-units': '每月仅28个名额',
+            'timer-hours': '小时',
+            'timer-minutes': '分钟',
+            'timer-seconds': '秒',
+            'pricing-plan-title': '终身访问通行证',
+            'pricing-feature-1': '所有Kanbanpro功能',
+            'pricing-feature-2': '终身更新与安全',
+            'pricing-feature-3': '多设备同步',
+            'pricing-bonus-1': '奖励：可视化工作区',
+            'pricing-bonus-2': '奖励：Notion蓝图',
+            'pricing-cta': '立即获取访问权限 — $22 一次性付款',
+            'pricing-secure': '256位加密安全结账',
+            'urgency-title': '限时优惠',
+            'urgency-desc': '优惠今日截止或28个月度名额售完即止。',
+            'urgency-cta': '在WhatsApp上激活免费试用',
+            'sticky-price': '$22 一次性付款',
+            'sticky-cta': '立即领取',
+            'footer-copyright': '© 2024 KanbanPRO. 保留所有权利。六西格玛、DMAIC和改善是用于组织改进的行业方法论。',
+        },
+        fr: {
+            'hero-title': 'Gérez des Projets Six Sigma depuis Votre Téléphone — <span class="text-primary">Ou Nous Vous Remboursons.</span>',
+            'hero-subtitle': "L'outil mobile tout-en-un combinant Kanban, DMAIC et Kaizen. Utilisé par plus de 120 professionnels dans le monde.",
+            'hero-cta': 'Obtenir un Accès Immédiat',
+            'testimonials-heading': 'Témoignages',
+            'testimonial-1': "Les modèles DMAIC sur mobile sont révolutionnaires. J'ai géré tout un audit d'usine depuis ma paume.",
+            'testimonial-2': "Enfin un outil Kaizen qui ne ressemble pas à un portage desktop. Fluide, rapide et très professionnel.",
+            'testimonial-3': "La complexité Six Sigma simplifiée. J'ai réduit mon temps de journalisation de projets de 40%.",
+            'testimonial-4': "Les meilleurs 22$ investis dans ma carrière cette année. Le blueprint Notion à lui seul vaut la peine.",
+            'badge-users': '120+ utilisateurs',
+            'badge-rated': 'Note 4.8',
+            'badge-guarantee': 'Remboursement 8 jours',
+            'badge-mobile': 'Mobile-first',
+            'benefits-title': 'Efficacité Professionnelle <br /><span class="text-primary">Dans Votre Poche</span>',
+            'benefit-1-title': 'Amélioration Continue des Processus',
+            'benefit-1-desc': 'Optimisez les flux de travail avec des cycles PDCA intégrés.',
+            'benefit-2-title': 'Gestion de Projet de Bout en Bout',
+            'benefit-2-desc': "De l'énoncé du problème à la phase de contrôle finale.",
+            'benefit-3-title': 'Structure DMAIC',
+            'benefit-3-desc': 'Étapes intégrées pour Définir, Mesurer, Analyser, Améliorer, Contrôler.',
+            'benefit-4-title': 'Outils Kanban Visuels',
+            'benefit-4-desc': "Identifiez les goulots d'étranglement instantanément avec des flux visuels en temps réel.",
+            'benefit-5-title': 'Cadre Six Sigma (6σ)',
+            'benefit-5-desc': 'Outils avancés pour réduire la variation et les défauts.',
+            'suite-title': 'La Suite Complète <span class="text-primary">Kanbanpro</span>',
+            'suite-card-1-title': 'Kanban Dynamique',
+            'suite-card-1-desc': "Colonnes adaptatives qui s'adaptent à la complexité du projet.",
+            'suite-card-2-title': 'Feuille de Route DMAIC',
+            'suite-card-2-desc': 'Guidance étape par étape à travers la méthodologie Six Sigma principale.',
+            'suite-card-3-title': 'Journaux Kaizen',
+            'suite-card-3-desc': 'Capturez les micro-améliorations instantanément au fur et à mesure.',
+            'limited-offer-badge': 'OFFRE À DURÉE LIMITÉE',
+            'free-bonuses': 'BONUS EXCLUSIFS GRATUITS',
+            'bonus-1-title': 'Espace de Travail Visuel',
+            'bonus-1-desc': 'Bonus 1 : Tableau de bord personnalisé avec analyse glisser-déposer.',
+            'bonus-2-title': 'Blueprint Notion',
+            'bonus-2-desc': 'Bonus 2 : Modèle organisationnel complet pour synchroniser les données mobiles avec votre espace de travail desktop.',
+            'pricing-units': 'Seulement 28 unités disponibles par mois',
+            'timer-hours': 'Heures',
+            'timer-minutes': 'Minutes',
+            'timer-seconds': 'Secondes',
+            'pricing-plan-title': "Pass d'Accès à Vie",
+            'pricing-feature-1': 'Toutes les Fonctionnalités Kanbanpro',
+            'pricing-feature-2': 'Mises à Jour et Sécurité à Vie',
+            'pricing-feature-3': 'Synchronisation Multi-Appareils',
+            'pricing-bonus-1': 'Bonus : Espace de Travail Visuel',
+            'pricing-bonus-2': 'Bonus : Blueprint Notion',
+            'pricing-cta': 'OBTENIR UN ACCÈS IMMÉDIAT — 22$ PAIEMENT UNIQUE',
+            'pricing-secure': 'Paiement sécurisé chiffré 256 bits',
+            'urgency-title': 'OFFRE LIMITÉE',
+            'urgency-desc': "L'offre se termine aujourd'hui ou lorsque les 28 places mensuelles sont remplies.",
+            'urgency-cta': "Activer l'Essai Gratuit sur WhatsApp",
+            'sticky-price': '22$ PAIEMENT UNIQUE',
+            'sticky-cta': 'OBTENIR MAINTENANT',
+            'footer-copyright': "© 2024 KanbanPRO. Tous droits réservés. Six Sigma, DMAIC et Kaizen sont des méthodologies industrielles utilisées pour l'amélioration organisationnelle.",
+        },
+        de: {
+            'hero-title': 'Six-Sigma-Projekte Vom Handy Verwalten — <span class="text-primary">Oder Wir Erstatten Ihr Geld.</span>',
+            'hero-subtitle': 'Das All-in-One-Mobilwerkzeug, das Kanban, DMAIC und Kaizen kombiniert. Genutzt von 120+ Fachleuten weltweit.',
+            'hero-cta': 'Sofortigen Zugang Erhalten',
+            'testimonials-heading': 'Erfahrungsberichte',
+            'testimonial-1': 'Die DMAIC-Vorlagen auf dem Handy sind ein Game-Changer. Ich habe eine komplette Werkshallenprüfung aus meiner Handfläche verwaltet.',
+            'testimonial-2': 'Endlich ein Kaizen-Tool, das sich nicht wie ein Desktop-Port anfühlt. Reibungslos, schnell und sehr professionell.',
+            'testimonial-3': 'Six-Sigma-Komplexität vereinfacht. Ich habe meine Projektprotokollierungszeit um 40% reduziert.',
+            'testimonial-4': 'Die besten 22$, die ich dieses Jahr in meine Karriere investiert habe. Allein der Notion-Blueprint lohnt sich.',
+            'badge-users': '120+ Nutzer',
+            'badge-rated': '4,8 Bewertung',
+            'badge-guarantee': '8-Tage-Rückgabe',
+            'badge-mobile': 'Mobile-First',
+            'benefits-title': 'Professionelle Effizienz <br /><span class="text-primary">In Ihrer Tasche</span>',
+            'benefit-1-title': 'Kontinuierliche Prozessverbesserung',
+            'benefit-1-desc': 'Optimieren Sie Arbeitsabläufe mit integrierten PDCA-Zyklen.',
+            'benefit-2-title': 'End-to-End-Projektmanagement',
+            'benefit-2-desc': 'Von der Problemstellung bis zur finalen Kontrollphase.',
+            'benefit-3-title': 'DMAIC-Strukturiert',
+            'benefit-3-desc': 'Integrierte Phasen für Definieren, Messen, Analysieren, Verbessern, Kontrollieren.',
+            'benefit-4-title': 'Visuelle Kanban-Werkzeuge',
+            'benefit-4-desc': 'Erkennen Sie Engpässe sofort mit Echtzeit-Visualströmen.',
+            'benefit-5-title': 'Six-Sigma-(6σ)-Framework',
+            'benefit-5-desc': 'Fortschrittliche Werkzeuge zur Reduzierung von Variation und Defekten.',
+            'suite-title': 'Die Vollständige <span class="text-primary">Kanbanpro</span> Suite',
+            'suite-card-1-title': 'Dynamisches Kanban',
+            'suite-card-1-desc': 'Adaptive Spalten, die mit der Projektkomplexität skalieren.',
+            'suite-card-2-title': 'DMAIC-Fahrplan',
+            'suite-card-2-desc': 'Schritt-für-Schritt-Anleitung durch die Kernmethodik von Six Sigma.',
+            'suite-card-3-title': 'Kaizen-Protokolle',
+            'suite-card-3-desc': 'Erfassen Sie Mikroverbesserungen sofort, wenn sie auf dem Shopfloor entstehen.',
+            'limited-offer-badge': 'ZEITLICH BEGRENZTES ANGEBOT',
+            'free-bonuses': 'KOSTENLOSE EXKLUSIVE BONI',
+            'bonus-1-title': 'Visueller Arbeitsbereich',
+            'bonus-1-desc': 'Bonus 1: Angepasstes Dashboard mit Drag-and-Drop-Analysen.',
+            'bonus-2-title': 'Notion-Blueprint',
+            'bonus-2-desc': 'Bonus 2: Vollständige Organisationsvorlage für die Synchronisierung mobiler Daten mit Ihrem Desktop-Arbeitsbereich.',
+            'pricing-units': 'Nur 28 Einheiten pro Monat verfügbar',
+            'timer-hours': 'Stunden',
+            'timer-minutes': 'Minuten',
+            'timer-seconds': 'Sekunden',
+            'pricing-plan-title': 'Lifetime-Zugangspass',
+            'pricing-feature-1': 'Alle Kanbanpro-Funktionen',
+            'pricing-feature-2': 'Lebenslange Updates & Sicherheit',
+            'pricing-feature-3': 'Multi-Gerät-Synchronisierung',
+            'pricing-bonus-1': 'Bonus: Visueller Arbeitsbereich',
+            'pricing-bonus-2': 'Bonus: Notion-Blueprint',
+            'pricing-cta': 'SOFORTIGEN ZUGANG ERHALTEN — 22$ EINMALIG',
+            'pricing-secure': '256-Bit-verschlüsselter sicherer Checkout',
+            'urgency-title': 'BEGRENZTES ANGEBOT',
+            'urgency-desc': 'Das Angebot endet heute oder wenn die 28 monatlichen Plätze gefüllt sind.',
+            'urgency-cta': 'Kostenlose Testversion auf WhatsApp Aktivieren',
+            'sticky-price': '22$ EINMALIG',
+            'sticky-cta': 'JETZT SICHERN',
+            'footer-copyright': '© 2024 KanbanPRO. Alle Rechte vorbehalten. Six Sigma, DMAIC und Kaizen sind Industriemethoden zur organisatorischen Verbesserung.',
+        },
+        ja: {
+            'hero-title': 'スマホでシックスシグマプロジェクトを管理 — <span class="text-primary">満足できなければ全額返金。</span>',
+            'hero-subtitle': 'カンバン、DMAIC、カイゼンを組み合わせたオールインワンモバイルツール。世界120人以上のプロが活用中。',
+            'hero-cta': '今すぐアクセスする',
+            'testimonials-heading': 'お客様の声',
+            'testimonial-1': 'モバイルのDMAICテンプレートは革命的です。手のひらで工場全体の監査を管理しました。',
+            'testimonial-2': 'ようやくデスクトップの移植品に見えないカイゼンツールが登場。スムーズで速く、とてもプロフェッショナル。',
+            'testimonial-3': 'シックスシグマの複雑さがシンプルに。プロジェクト記録時間を40%削減しました。',
+            'testimonial-4': '今年のキャリアに使った最も価値ある22ドル。Notionブループリントだけでも十分な価値があります。',
+            'badge-users': '120人以上のユーザー',
+            'badge-rated': '評価4.8',
+            'badge-guarantee': '8日間返金保証',
+            'badge-mobile': 'モバイルファースト',
+            'benefits-title': 'プロの効率を <br /><span class="text-primary">ポケットに</span>',
+            'benefit-1-title': '継続的プロセス改善',
+            'benefit-1-desc': '統合PDCAサイクルでワークフローを最適化。',
+            'benefit-2-title': 'エンドツーエンドプロジェクト管理',
+            'benefit-2-desc': '問題提起から最終管理フェーズまで。',
+            'benefit-3-title': 'DMAIC構造化',
+            'benefit-3-desc': '定義、測定、分析、改善、管理の各段階を内蔵。',
+            'benefit-4-title': 'ビジュアルカンバンツール',
+            'benefit-4-desc': 'リアルタイムビジュアルフローでボトルネックを即座に特定。',
+            'benefit-5-title': 'シックスシグマ(6σ)フレームワーク',
+            'benefit-5-desc': 'バラつきと欠陥を削減するための高度なツール。',
+            'suite-title': '完全な <span class="text-primary">Kanbanpro</span> スイート',
+            'suite-card-1-title': 'ダイナミックカンバン',
+            'suite-card-1-desc': 'プロジェクトの複雑さに応じて拡張する適応型コラム。',
+            'suite-card-2-title': 'DMIACロードマップ',
+            'suite-card-2-desc': 'シックスシグマ中核方法論を段階的にガイド。',
+            'suite-card-3-title': 'カイゼンログ',
+            'suite-card-3-desc': '現場で起きた瞬間にマイクロ改善を即座に記録。',
+            'limited-offer-badge': '期間限定オファー',
+            'free-bonuses': '無料限定ボーナス',
+            'bonus-1-title': 'ビジュアルワークスペース',
+            'bonus-1-desc': 'ボーナス1：ドラッグ&ドロップ分析付きカスタムダッシュボード。',
+            'bonus-2-title': 'Notionブループリント',
+            'bonus-2-desc': 'ボーナス2：モバイルデータをデスクトップワークスペースに同期するための完全な組織テンプレート。',
+            'pricing-units': '月間わずか28ユニットのみ',
+            'timer-hours': '時間',
+            'timer-minutes': '分',
+            'timer-seconds': '秒',
+            'pricing-plan-title': '生涯アクセスパス',
+            'pricing-feature-1': 'Kanbanproの全機能',
+            'pricing-feature-2': '生涯アップデート＆セキュリティ',
+            'pricing-feature-3': 'マルチデバイス同期',
+            'pricing-bonus-1': 'ボーナス：ビジュアルワークスペース',
+            'pricing-bonus-2': 'ボーナス：Notionブループリント',
+            'pricing-cta': '今すぐアクセスする — $22 一回払い',
+            'pricing-secure': '256ビット暗号化安全決済',
+            'urgency-title': '限定オファー',
+            'urgency-desc': 'オファーは本日または28枠が埋まり次第終了。',
+            'urgency-cta': 'WhatsAppで無料トライアルを有効化',
+            'sticky-price': '$22 一回払い',
+            'sticky-cta': '今すぐ取得',
+            'footer-copyright': '© 2024 KanbanPRO. 全著作権所有。シックスシグマ、DMAIC、カイゼンは組織改善に使用される業界手法です。',
+        },
+        ko: {
+            'hero-title': '스마트폰으로 식스 시그마 프로젝트 관리 — <span class="text-primary">만족 못하면 전액 환불.</span>',
+            'hero-subtitle': '칸반, DMAIC, 카이젠을 결합한 올인원 모바일 도구. 전 세계 120명 이상의 전문가가 사용 중.',
+            'hero-cta': '즉시 액세스 받기',
+            'testimonials-heading': '사용자 후기',
+            'testimonial-1': '모바일의 DMAIC 템플릿은 게임 체인저입니다. 손바닥으로 공장 전체 감사를 관리했습니다.',
+            'testimonial-2': '마침내 데스크톱 이식처럼 보이지 않는 카이젠 도구가 나왔네요. 부드럽고 빠르며 매우 전문적입니다.',
+            'testimonial-3': '식스 시그마 복잡성이 단순해졌습니다. 프로젝트 기록 시간을 40% 단축했습니다.',
+            'testimonial-4': '올해 커리어에 투자한 최고의 22달러. Notion 블루프린트만으로도 충분한 가치가 있습니다.',
+            'badge-users': '120명 이상 사용자',
+            'badge-rated': '4.8 평점',
+            'badge-guarantee': '8일 환불 보장',
+            'badge-mobile': '모바일 우선',
+            'benefits-title': '전문적 효율성 <br /><span class="text-primary">주머니 속으로</span>',
+            'benefit-1-title': '지속적 프로세스 개선',
+            'benefit-1-desc': '통합 PDCA 사이클로 워크플로우를 최적화합니다.',
+            'benefit-2-title': '엔드투엔드 프로젝트 관리',
+            'benefit-2-desc': '문제 설명부터 최종 제어 단계까지.',
+            'benefit-3-title': 'DMAIC 구조화',
+            'benefit-3-desc': '정의, 측정, 분석, 개선, 제어 단계 내장.',
+            'benefit-4-title': '시각적 칸반 도구',
+            'benefit-4-desc': '실시간 시각적 흐름으로 병목 현상을 즉시 파악.',
+            'benefit-5-title': '식스 시그마(6σ) 프레임워크',
+            'benefit-5-desc': '변동성과 불량을 줄이는 고급 도구.',
+            'suite-title': '완전한 <span class="text-primary">Kanbanpro</span> 스위트',
+            'suite-card-1-title': '동적 칸반',
+            'suite-card-1-desc': '프로젝트 복잡성에 따라 확장되는 적응형 컬럼.',
+            'suite-card-2-title': 'DMAIC 로드맵',
+            'suite-card-2-desc': '식스 시그마 핵심 방법론을 단계별로 안내.',
+            'suite-card-3-title': '카이젠 로그',
+            'suite-card-3-desc': '현장에서 발생하는 미세 개선을 즉시 포착.',
+            'limited-offer-badge': '한정 시간 특가',
+            'free-bonuses': '무료 독점 보너스',
+            'bonus-1-title': '비주얼 워크스페이스',
+            'bonus-1-desc': '보너스 1: 드래그 앤 드롭 분석이 있는 맞춤형 대시보드.',
+            'bonus-2-title': 'Notion 블루프린트',
+            'bonus-2-desc': '보너스 2: 모바일 데이터를 데스크톱 워크스페이스에 동기화하는 완전한 조직 템플릿.',
+            'pricing-units': '월 28개 단위만 이용 가능',
+            'timer-hours': '시간',
+            'timer-minutes': '분',
+            'timer-seconds': '초',
+            'pricing-plan-title': '평생 액세스 패스',
+            'pricing-feature-1': '모든 Kanbanpro 기능',
+            'pricing-feature-2': '평생 업데이트 및 보안',
+            'pricing-feature-3': '멀티 디바이스 동기화',
+            'pricing-bonus-1': '보너스: 비주얼 워크스페이스',
+            'pricing-bonus-2': '보너스: Notion 블루프린트',
+            'pricing-cta': '즉시 액세스 받기 — $22 일회 결제',
+            'pricing-secure': '256비트 암호화 안전 결제',
+            'urgency-title': '한정 특가',
+            'urgency-desc': '오늘 또는 28개 월간 슬롯이 모두 차면 특가 종료.',
+            'urgency-cta': 'WhatsApp에서 무료 체험 시작',
+            'sticky-price': '$22 일회 결제',
+            'sticky-cta': '지금 받기',
+            'footer-copyright': '© 2024 KanbanPRO. 모든 권리 보유. 식스 시그마, DMAIC, 카이젠은 조직 개선에 사용되는 업계 방법론입니다.',
+        },
+    };
 
-                    if (hoursEl) hoursEl.textContent = h.toString().padStart(2, '0');
-                    if (minutesEl) minutesEl.textContent = m.toString().padStart(2, '0');
-                    if (secondsEl) secondsEl.textContent = s.toString().padStart(2, '0');
+    function setLanguage(lang) {
+        if (!translations[lang]) return;
+        // Plain text elements
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n');
+            if (translations[lang][key] !== undefined) {
+                el.textContent = translations[lang][key];
+            }
+        });
+        // HTML elements (contain child tags)
+        document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n-html');
+            if (translations[lang][key] !== undefined) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        // Active button state
+        document.querySelectorAll('.lang-btn').forEach(function(btn) {
+            btn.classList.toggle('active-lang', btn.dataset.lang === lang);
+        });
+        // HTML lang attribute
+        document.documentElement.lang = lang;
+        // Persist choice
+        try { localStorage.setItem('kp-lang', lang); } catch(e) {}
+    }
 
-                    if (timeLeft <= 0) {
-                        clearInterval(timerInterval);
-                        window.location.href = redirectUrl; // Enabled redirect
-                    } else {
-                        timeLeft--;
-                    }
-                }
+    // Restore saved language on load
+    (function() {
+        var saved;
+        try { saved = localStorage.getItem('kp-lang'); } catch(e) {}
+        if (saved && translations[saved]) {
+            setLanguage(saved);
+        }
+    })();
+    </script>
 
-                const timerInterval = setInterval(updateTimer, 1000);
-                updateTimer(); // Initial call to prevent 1s delay
-            })();</script>
 </body>
-
 </html>
