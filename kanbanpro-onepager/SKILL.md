@@ -20,7 +20,7 @@ consistente — solo cambia el contenido por industria.
 ## Ruta del motor
 
 ```
-C:\Users\rodri\OneDrive\Documents\DD\stitch_kanbanpro_vsl_landing_page\generate_onepager.py
+./generate_onepager.py
 ```
 
 ## Industrias disponibles (listas para usar)
@@ -38,7 +38,6 @@ C:\Users\rodri\OneDrive\Documents\DD\stitch_kanbanpro_vsl_landing_page\generate_
 ### Caso 1 — Industria ya existe en la librería
 
 ```bash
-cd "C:\Users\rodri\OneDrive\Documents\DD\stitch_kanbanpro_vsl_landing_page"
 python generate_onepager.py [clave]
 # Ejemplo: python generate_onepager.py gym
 ```
@@ -99,7 +98,6 @@ python generate_onepager.py all
 - Hacer commit y push a GitHub con el PDF nuevo y el script actualizado:
 
 ```bash
-cd "C:\Users\rodri\OneDrive\Documents\DD\stitch_kanbanpro_vsl_landing_page"
 git add generate_onepager.py kanbanpro-[clave]-onepager.pdf
 git commit -m "Add [sector] one-pager to KanbanPro library"
 git push origin main

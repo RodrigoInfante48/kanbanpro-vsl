@@ -13,6 +13,7 @@ Para industrias nuevas: agregar entrada al dict INDUSTRIES abajo.
 """
 
 import sys
+import os
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
@@ -31,7 +32,7 @@ TEAL_DIM  = HexColor('#00b8a0')
 GREEN_BG  = HexColor('#1f3a2e')
 GREEN_TXT = HexColor('#4ade80')
 
-BASE_DIR  = r'C:\Users\rodri\OneDrive\Documents\DD\stitch_kanbanpro_vsl_landing_page'
+BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
 
 # ─────────────────────────────────────────────
 # INDUSTRIAS — solo editar aqui para agregar nuevas

@@ -8,6 +8,7 @@ Target: Propietarios de clinica veterinaria en Chapinero / Usaquen, Bogota
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
+import os
 
 # ─────────────────────────────────────────────
 # BRAND — KanbanPro
@@ -21,7 +22,7 @@ GRAY       = HexColor('#9ca3af')
 RED_DIM    = HexColor('#ff6b6b')
 TEAL_DIM   = HexColor('#00b8a0')
 
-OUTPUT = r'C:\Users\rodri\OneDrive\Documents\DD\stitch_kanbanpro_vsl_landing_page\kanbanpro-vet-onepager.pdf'
+OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'kanbanpro-vet-onepager.pdf')
 W, H = A4   # 595 x 842 pt
 
 # ─────────────────────────────────────────────
