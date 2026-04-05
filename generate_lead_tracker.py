@@ -14,8 +14,9 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.formatting.rule import ColorScaleRule, FormulaRule
 from datetime import date, timedelta
+import os
 
-OUTPUT = r"C:\Users\rodri\OneDrive\Documents\DD\stitch_kanbanpro_vsl_landing_page\kanbanpro-lead-tracker.xlsx"
+OUTPUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'kanbanpro-lead-tracker.xlsx')
 
 # ─────────────────────────────────────────────
 # BRAND COLORS (openpyxl: no #)
