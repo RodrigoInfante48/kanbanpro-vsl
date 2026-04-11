@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DataPocket automatiza la anamnesis de tus pacientes antes de que lleguen a tu consultorio. Recupera 10-15 minutos por consulta.">
+  <meta name="theme-color" content="#1a1a2e">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DataPocket — Anamnesis automatizada para odontólogos">
+  <meta property="og:description" content="Recupera 10-15 minutos por consulta. Sin papel, sin repetición, sin pérdida de información.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M08G3EFVMM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M08G3EFVMM');
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            datapocket: {
+              teal: '#00E6C7',
+              'teal-dark': '#00C4B0',
+              gold: '#FFB800',
+              'gold-dark': '#E5A500',
+              navy: '#1a1a2e',
+              'navy-dark': '#0f0f1a',
+              surface: '#16213e',
+              'surface-light': '#1f2f52',
+            }
+          },
+          boxShadow: {
+            'soft': '0 4px 6px -1px rgba(26, 26, 46, 0.05), 0 10px 15px -3px rgba(26, 26, 46, 0.08)',
+            'soft-lg': '0 10px 25px -5px rgba(26, 26, 46, 0.1), 0 8px 10px -6px rgba(26, 26, 46, 0.05)',
+            'glow-teal': '0 0 20px rgba(0, 230, 199, 0.3)',
+          },
+          backdropBlur: {
+            'glass': '12px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <style>
+    /* Base styles */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+    }
+
+    /* Ensure all interactive elements have cursor pointer */
+    a, button, [role="button"] {
+      cursor: pointer;
+    }
+
+    /* Mobile: ensure touch targets are at least 44px */
+    @media (max-width: 640px) {
+      a.inline-flex, button {
+        min-height: 44px;
+      }
+    }
+
+    /* Focus visible for accessibility */
+    :focus-visible {
+      outline: 2px solid #00E6C7;
+      outline-offset: 2px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1a2e;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #00E6C7;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00C4B0;
+    }
+
+    /* Video modal animation */
+    .modal-enter {
+      opacity: 0;
+    }
+
+    .modal-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease-out;
+    }
+
+    .modal-exit {
+      opacity: 1;
+    }
+
+    .modal-exit-active {
+      opacity: 0;
+      transition: opacity 200ms ease-in;
+    }
+
+    /* Thumbnail hover effect */
+    .thumbnail-overlay {
+      background: linear-gradient(135deg, rgba(0, 230, 199, 0.9) 0%, rgba(26, 26, 46, 0.95) 100%);
+    }
+
+    /* Pulse animation for play button */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 230, 199, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 0 15px rgba(0, 230, 199, 0);
+      }
+    }
+
+    .play-button {
+      animation: pulse-glow 2s infinite;
+    }
+  </style>
+</head>
+<body class="bg-datapocket-navy text-white min-h-screen">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-datapocket-navy/90 backdrop-blur-glass border-b border-datapocket-surface-light">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <svg class="w-8 h-8 text-datapocket-teal" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 7.5 7.8 8.4 8.3 9.2C6.5 10.1 5 12 5 14.5C5 17.5 7.5 20 10.5 20H13.5C16.5 20 19 17.5 19 14.5C19 12 17.5 10.1 15.7 9.2C16.2 8.4 16.5 7.5 16.5 6.5C16.5 4 14.5 2 12 2ZM12 4C13.5 4 14.5 5 14.5 6.5C14.5 8 13.5 9 12 9C10.5 9 9.5 8 9.5 6.5C9.5 5 10.5 4 12 4ZM13.5 18H10.5C8.5 18 7 16.5 7 14.5C7 12.5 8.5 11 10.5 11H13.5C15.5 11 17 12.5 17 14.5C17 16.5 15.5 18 13.5 18Z"/>
+          </svg>
+          <span class="font-bold text-lg text-white">DataPocket</span>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <a
+          href="https://wa.me/573209974750"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:flex items-center gap-2 text-datapocket-teal hover:text-datapocket-teal-dark transition-colors duration-200"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span class="font-medium">+57 320 997 4750</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- HERO / HOOK Section -->
+    <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
+      <!-- Background gradient -->
+      <div class="absolute inset-0 bg-gradient-to-br from-datapocket-navy via-datapocket-surface to-datapocket-teal/10"></div>
+
+      <!-- Decorative glow -->
+      <div class="absolute top-1/4 -right-1/4 w-96 h-96 bg-datapocket-teal/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 -left-1/4 w-96 h-96 bg-datapocket-gold/10 rounded-full blur-3xl"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <!-- Eyebrow -->
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-datapocket-surface-light/50 border border-datapocket-teal/30 mb-6">
+            <svg class="w-4 h-4 text-datapocket-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span class="text-sm font-medium text-datapocket-teal">Para odontólogos en Bogotá</span>
+          </div>
+
+          <!-- H1 -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+            ¿Cuánto tiempo pierdes preguntando
+            <span class="block text-datapocket-teal">lo que el paciente ya sabe?</span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+            DataPocket hace la anamnesis antes de que el paciente llegue al sillón.
+            <span class="block mt-2 text-gray-400">Recupera 10-15 minutos por consulta. Sin papel, sin repetición, sin pérdida de información.</span>
+          </p>
+
+          <!-- CTA Primary -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <a
+              href="#demo"
+              class="inline-flex items-center gap-2 px-8 py-4 bg-datapocket-teal text-datapocket-navy font-bold rounded-lg hover:bg-datapocket-teal-dark transition-all duration-200 shadow-glow-teal hover:shadow-lg transform hover:-translate-y-0.5"
+            >
+              <span>Quiero ver cómo funciona</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a
+              href="https://wa.me/573209974750?text=Hola,%20quiero%20probar%20DataPocket"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-8 py-4 border-2 border-datapocket-teal/50 text-datapocket-teal font-semibold rounded-lg hover:border-datapocket-teal hover:bg-datapocket-teal/10 transition-all duration-200"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span>Escribir al WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Video Thumbnail -->
+          <div class="max-w-4xl mx-auto">
+            <div
+              id="demo"
+              class="relative group cursor-pointer"
+              onclick="openVideoModal()"
+              role="button"
+              tabindex="0"
+              aria-label="Ver demo de 3 minutos de DataPocket"
+              onkeydown="if(event.key === 'Enter' || event.key === ' ') { openVideoModal(); }"
+            >
+              <!-- Thumbnail container -->
+              <div class="relative aspect-video rounded-2xl overflow-hidden shadow-soft-lg border border-datapocket-surface-light bg-datapocket-surface">
+                <!-- Background pattern -->
+                <div class="absolute inset-0 bg-gradient-to-br from-datapocket-navy to-datapocket-surface"></div>
+
+                <!-- Grid pattern overlay -->
+                <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#00E6C7 1px, transparent 1px), linear-gradient(90deg, #00E6C7 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+                <!-- Center content -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                  <!-- Play button -->
+                  <div class="play-button relative flex items-center justify-center w-20 h-20 rounded-full bg-datapocket-teal group-hover:scale-110 transition-transform duration-200">
+                    <svg class="w-8 h-8 text-datapocket-navy ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+
+                  <!-- Label -->
+                  <span class="mt-4 text-lg font-semibold text-white">Demo de 3 minutos</span>
+                  <span class="text-sm text-gray-400">Haz clic para ver</span>
+                </div>
+
+                <!-- Hover overlay -->
+                <div class="absolute inset-0 thumbnail-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              <!-- Caption below thumbnail -->
+              <p class="text-center text-gray-400 text-sm mt-4">
+                Mira cómo Tally → Gemini → Notion automatizan tu anamnesis
+              </p>
+            </div>
+          </div>
+
+          <!-- Social proof -->
+          <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-gray-400 text-sm">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-datapocket-teal" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>Usado en Usaquén</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-datapocket-teal" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>Chapinero</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-datapocket-teal" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>Cedritos</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-datapocket-teal" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+              <span>Chía</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOLOR Section -->
+    <section class="py-20 sm:py-28 bg-datapocket-surface relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute top-0 left-1/4 w-64 h-64 bg-datapocket-gold/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-datapocket-teal/5 rounded-full blur-3xl"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section header -->
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Tu consulta vale oro.<br>
+            <span class="text-datapocket-teal">No la desperdicies en preguntas de relleno.</span>
+          </h2>
+          <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            Estos son los 3 problemas que DataPocket elimina de tu práctica diaria
+          </p>
+        </div>
+
+        <!-- Pain points grid -->
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <!-- Card 1: Anamnesis repetida -->
+          <div class="group relative bg-datapocket-navy rounded-2xl p-8 border border-datapocket-surface-light hover:border-datapocket-teal/50 transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-1">
+            <!-- Icon container -->
+            <div class="w-14 h-14 rounded-xl bg-datapocket-gold/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 text-datapocket-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-xl font-bold text-white mb-3">
+              La anamnesis que se repite<br>consulta tras consulta
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              El mismo paciente, las mismas preguntas. Nombre, alergias, medicamentos...
+              15 minutos que se van antes de siquiera abrir la boca para revisar.
+            </p>
+
+            <!-- Bottom accent -->
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-datapocket-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"></div>
+          </div>
+
+          <!-- Card 2: Tratamiento pendiente -->
+          <div class="group relative bg-datapocket-navy rounded-2xl p-8 border border-datapocket-surface-light hover:border-datapocket-teal/50 transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-1">
+            <!-- Icon container -->
+            <div class="w-14 h-14 rounded-xl bg-datapocket-teal/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 text-datapocket-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-xl font-bold text-white mb-3">
+              El tratamiento pendiente que<br>nadie anotó bien
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Papeles que se pierden, letras ilegibles, notas incompletas.
+              El paciente vuelve y nadie recuerda qué quedamos en hacer.
+            </p>
+
+            <!-- Bottom accent -->
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-datapocket-teal to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"></div>
+          </div>
+
+          <!-- Card 3: Paciente que no volvió -->
+          <div class="group relative bg-datapocket-navy rounded-2xl p-8 border border-datapocket-surface-light hover:border-datapocket-teal/50 transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-1">
+            <!-- Icon container -->
+            <div class="w-14 h-14 rounded-xl bg-datapocket-gold/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 text-datapocket-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+              </svg>
+            </div>
+
+            <!-- Content -->
+            <h3 class="text-xl font-bold text-white mb-3">
+              El paciente que no volvió<br>y nadie sabe por qué
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Sin seguimiento, sin recordatorios, sin historial accesible.
+              Se fue con la competencia y nunca entendiste qué pasó.
+            </p>
+
+            <!-- Bottom accent -->
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-datapocket-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"></div>
+          </div>
+        </div>
+
+        <!-- Micro CTA -->
+        <div class="text-center mt-12">
+          <a
+            href="#solucion"
+            class="inline-flex items-center gap-2 text-datapocket-teal font-semibold hover:text-datapocket-teal-dark transition-colors duration-200"
+          >
+            <span>Hay una mejor forma</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUCIÓN Section -->
+    <section id="solucion" class="py-20 sm:py-28 bg-datapocket-navy relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute top-1/2 -left-1/4 w-96 h-96 bg-datapocket-teal/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-64 h-64 bg-datapocket-gold/5 rounded-full blur-3xl"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section header -->
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            DataPocket hace la anamnesis<br>
+            <span class="text-datapocket-teal">antes de la consulta</span>
+          </h2>
+          <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            3 pasos. Cero fricción. Todo automatizado.
+          </p>
+        </div>
+
+        <!-- Flow diagram -->
+        <div class="relative">
+          <!-- Connection line (desktop) -->
+          <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-datapocket-gold via-datapocket-teal to-datapocket-gold transform -translate-y-1/2"></div>
+
+          <!-- Steps grid -->
+          <div class="grid md:grid-cols-3 gap-8 relative">
+            <!-- Step 1: Tally -->
+            <div class="relative">
+              <div class="bg-datapocket-surface rounded-2xl p-8 border border-datapocket-surface-light hover:border-datapocket-gold/50 transition-all duration-300 hover:shadow-soft-lg h-full">
+                <!-- Step number -->
+                <div class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-datapocket-gold flex items-center justify-center text-datapocket-navy font-bold text-sm">
+                  1
+                </div>
+
+                <!-- Icon -->
+                <div class="w-16 h-16 rounded-xl bg-datapocket-gold/10 flex items-center justify-center mb-6">
+                  <svg class="w-8 h-8 text-datapocket-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+
+                <!-- Content -->
+                <h3 class="text-xl font-bold text-white mb-3">
+                  Paciente llena Tally<br>desde su celular
+                </h3>
+                <p class="text-gray-400 leading-relaxed mb-4">
+                  Recibe el link por WhatsApp después de agendar.
+                  Lo completa en 3 minutos. Sin apps, sin login.
+                </p>
+                <span class="inline-block text-sm text-datapocket-gold font-medium">
+                  ⏱️ 3 minutos
+                </span>
+              </div>
+            </div>
+
+            <!-- Step 2: Gemini -->
+            <div class="relative">
+              <div class="bg-datapocket-surface rounded-2xl p-8 border border-datapocket-surface-light hover:border-datapocket-teal/50 transition-all duration-300 hover:shadow-soft-lg h-full">
+                <!-- Step number -->
+                <div class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-datapocket-teal flex items-center justify-center text-datapocket-navy font-bold text-sm">
+                  2
+                </div>
+
+                <!-- Icon -->
+                <div class="w-16 h-16 rounded-xl bg-datapocket-teal/10 flex items-center justify-center mb-6">
+                  <svg class="w-8 h-8 text-datapocket-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                  </svg>
+                </div>
+
+                <!-- Content -->
+                <h3 class="text-xl font-bold text-white mb-3">
+                  Gemini analiza y genera<br>ficha estructurada
+                </h3>
+                <p class="text-gray-400 leading-relaxed mb-4">
+                  La IA extrae alergias, medicamentos, condiciones de riesgo.
+                  Te da un resumen clínico listo para revisar.
+                </p>
+                <span class="inline-block text-sm text-datapocket-teal font-medium">
+                  ✨ IA procesando
+                </span>
+              </div>
+            </div>
+
+            <!-- Step 3: Notion -->
+            <div class="relative">
+              <div class="bg-datapocket-surface rounded-2xl p-8 border border-datapocket-surface-light hover:border-datapocket-gold/50 transition-all duration-300 hover:shadow-soft-lg h-full">
+                <!-- Step number -->
+                <div class="absolute -top-4 left-8 w-8 h-8 rounded-full bg-datapocket-gold flex items-center justify-center text-datapocket-navy font-bold text-sm">
+                  3
+                </div>
+
+                <!-- Icon -->
+                <div class="w-16 h-16 rounded-xl bg-datapocket-gold/10 flex items-center justify-center mb-6">
+                  <svg class="w-8 h-8 text-datapocket-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                  </svg>
+                </div>
+
+                <!-- Content -->
+                <h3 class="text-xl font-bold text-white mb-3">
+                  Tú llegas al consultorio<br>con todo listo
+                </h3>
+                <p class="text-gray-400 leading-relaxed mb-4">
+                  Abres Notion y ves la ficha completa.
+                  Historial, alertas, tratamiento pendiente. Todo ahí.
+                </p>
+                <span class="inline-block text-sm text-datapocket-gold font-medium">
+                  ✓ Listo para atender
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notion mockup placeholder -->
+        <div class="mt-16 max-w-4xl mx-auto">
+          <div class="relative rounded-2xl overflow-hidden border border-datapocket-surface-light shadow-soft-lg">
+            <!-- Browser chrome -->
+            <div class="bg-datapocket-surface-light px-4 py-3 flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <div class="ml-4 flex-1 bg-datapocket-navy rounded px-3 py-1 text-xs text-gray-400">
+                notion.so/DataPocket/Anamnesis
+              </div>
+            </div>
+
+            <!-- Mockup content -->
+            <div class="bg-datapocket-navy aspect-video flex items-center justify-center">
+              <div class="text-center p-8">
+                <svg class="w-16 h-16 text-datapocket-teal mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+                </svg>
+                <p class="text-white font-semibold mb-2">Base de datos Notion</p>
+                <p class="text-gray-400 text-sm">Aquí verás la ficha de cada paciente</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini CTA -->
+        <div class="text-center mt-12">
+          <a
+            href="https://wa.me/573209974750?text=Hola,%20quiero%20ver%20una%20demo%20en%20vivo%20de%20DataPocket"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 border-2 border-datapocket-teal text-datapocket-teal font-semibold rounded-lg hover:bg-datapocket-teal hover:text-datapocket-navy transition-all duration-200"
+          >
+            <span>Ver demo en vivo</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFERTA Section -->
+    <section class="py-20 sm:py-28 bg-datapocket-surface relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute top-0 right-1/4 w-64 h-64 bg-datapocket-teal/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-datapocket-gold/5 rounded-full blur-3xl"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section header -->
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Elige cómo empezar.<br>
+            <span class="text-datapocket-teal">Sin compromiso mensual.</span>
+          </h2>
+          <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            Un solo pago. Para siempre. Sin sorpresas.
+          </p>
+        </div>
+
+        <!-- Pricing cards -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+          <!-- Tier 1: Self-Setup -->
+          <div class="relative bg-datapocket-navy rounded-2xl p-8 border border-datapocket-surface-light hover:border-datapocket-gold/50 transition-all duration-300 hover:shadow-soft-lg">
+            <div class="mb-6">
+              <h3 class="text-2xl font-bold text-white mb-2">Self-Setup</h3>
+              <p class="text-gray-400 text-sm">Para el odontólogo hands-on</p>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-8">
+              <span class="text-5xl font-extrabold text-white">$9.99</span>
+              <span class="text-gray-400 ml-2">USD</span>
+              <p class="text-gray-500 text-sm mt-1">Pago único — para siempre</p>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Plantilla de formulario Tally</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Instrucciones paso a paso</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Acceso a comunidad WhatsApp</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Actualizaciones futuras</span>
+              </li>
+            </ul>
+
+            <!-- CTA -->
+            <a
+              href="https://wa.me/573209974750?text=Hola,%20quiero%20el%20Self-Setup%20de%20DataPocket"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full py-4 text-center border-2 border-datapocket-gold text-datapocket-gold font-semibold rounded-lg hover:bg-datapocket-gold hover:text-datapocket-navy transition-all duration-200"
+            >
+              Empezar ahora
+            </a>
+          </div>
+
+          <!-- Tier 2: Setup Completo (MOST POPULAR) -->
+          <div class="relative bg-datapocket-navy rounded-2xl p-8 border-2 border-datapocket-teal shadow-glow-teal transition-all duration-300 hover:shadow-soft-lg">
+            <!-- Most popular badge -->
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+              <span class="inline-block px-4 py-1 bg-datapocket-teal text-datapocket-navy text-sm font-bold rounded-full">
+                Más vendido
+              </span>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="text-2xl font-bold text-white mb-2">Setup Completo</h3>
+              <p class="text-gray-400 text-sm">Te lo dejamos listo para usar</p>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-8">
+              <span class="text-5xl font-extrabold text-white">$33</span>
+              <span class="text-gray-400 ml-2">USD</span>
+              <p class="text-gray-500 text-sm mt-1">Pago único — para siempre</p>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Todo lo del Self-Setup</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Configuramos todo por ti</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Tu logo y colores en el form</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Sesión de onboarding 30 min</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-datapocket-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span class="text-gray-300">Soporte prioritario 30 días</span>
+              </li>
+            </ul>
+
+            <!-- CTA -->
+            <a
+              href="https://wa.me/573209974750?text=Hola,%20quiero%20el%20Setup%20Completo%20de%20DataPocket"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full py-4 text-center bg-datapocket-teal text-datapocket-navy font-bold rounded-lg hover:bg-datapocket-teal-dark transition-all duration-200 shadow-glow-teal"
+            >
+              Quiero el setup completo
+            </a>
+          </div>
+        </div>
+
+        <!-- Price anchor -->
+        <div class="max-w-2xl mx-auto bg-datapocket-navy rounded-xl p-6 border border-datapocket-surface-light">
+          <div class="flex items-start gap-4">
+            <svg class="w-6 h-6 text-datapocket-gold flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <div>
+              <h4 class="text-white font-semibold mb-2">¿Te parece mucho?</h4>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Un software odontológico tradicional cuesta <span class="text-white font-medium">$80-$200 USD/mes</span> (suscripción anual).
+                DataPocket se paga solo con <span class="text-datapocket-teal font-semibold">1-2 pacientes nuevos</span>.
+                Y es un pago único, no mensual.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL Section -->
+    <section class="py-20 sm:py-28 bg-datapocket-navy relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-datapocket-teal/10 rounded-full blur-3xl"></div>
+
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <!-- H2 -->
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          Escríbeme y en 5 minutos ves cómo se ve<br>
+          <span class="text-datapocket-teal">la ficha que recibirías mañana</span>
+        </h2>
+
+        <!-- Microcopy -->
+        <p class="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
+          Sin compromiso. Demo real con tu especialidad. Te muestro cómo quedaría la anamnesis
+          de un paciente de <span class="text-white font-medium">endodoncia</span>,
+          <span class="text-white font-medium">ortodoncia</span> o
+          <span class="text-white font-medium">implantes</span>.
+        </p>
+
+        <!-- WhatsApp CTA Button -->
+        <a
+          href="https://wa.me/573209974750?text=Hola,%20quiero%20ver%20una%20demo%20de%20DataPocket%20para%20mi%20consultorio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-4 px-10 py-5 bg-[#25D366] text-white font-bold text-lg rounded-xl hover:bg-[#20BD5A] transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1"
+        >
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span>+57 320 997 4750</span>
+        </a>
+
+        <!-- Secondary CTA -->
+        <div class="mt-8">
+          <a
+            href="https://wa.me/573209974750?text=Tengo%20una%20pregunta%20sobre%20DataPocket"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-gray-400 hover:text-datapocket-teal transition-colors duration-200"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.459 1.77-2.5 3.272-2.5 1.989 0 3.5 1.511 3.5 3.5 0 1.072-.508 2.023-1.282 2.656-.208.17-.326.422-.326.691v.879c0 .414.336.75.75.75h.25a.75.75 0 00.75-.75v-.616c0-.528.233-1.025.636-1.366 1.287-1.093 2.042-2.677 2.042-4.394 0-3.284-2.716-6-6-6-2.841 0-5.228 1.968-5.836 4.612m-2.06 3.54c-.16.568-.25 1.168-.25 1.79 0 3.309 2.691 6 6 6 .622 0 1.222-.09 1.79-.25"/>
+            </svg>
+            <span>¿Tienes dudas? Pregúntame aquí mismo</span>
+          </a>
+        </div>
+
+        <!-- Urgency badge -->
+        <div class="mt-12 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-datapocket-gold/10 border border-datapocket-gold/30">
+          <svg class="w-4 h-4 text-datapocket-gold" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span class="text-sm text-datapocket-gold font-medium">
+            Fundadores: primeros 50 odontólogos tienen precio congelado
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky CTA Bar (mobile) -->
+  <div id="stickyBar" class="fixed bottom-0 left-0 right-0 z-50 bg-datapocket-navy/95 backdrop-blur-glass border-t border-datapocket-surface-light py-4 px-4 transform translate-y-full transition-transform duration-300 lg:hidden">
+    <a
+      href="https://wa.me/573209974750?text=Hola,%20quiero%20probar%20DataPocket"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block w-full py-3 bg-datapocket-teal text-datapocket-navy font-bold text-center rounded-lg hover:bg-datapocket-teal-dark transition-colors duration-200"
+    >
+      Empezar ahora →
+    </a>
+  </div>
+
+  <!-- Video Modal -->
+  <div
+    id="videoModal"
+    class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-glass hidden items-center justify-center p-4"
+    onclick="closeVideoModal()"
+  >
+    <div class="relative w-full max-w-5xl" onclick="event.stopPropagation()">
+      <!-- Close button -->
+      <button
+        class="absolute -top-12 right-0 text-white hover:text-datapocket-teal transition-colors duration-200"
+        onclick="closeVideoModal()"
+        aria-label="Cerrar video"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <!-- Video container (16:9 aspect ratio) -->
+      <div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-soft-lg">
+        <!-- Placeholder content - replace iframe src when video is ready -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-center">
+            <svg class="w-16 h-16 text-datapocket-teal mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            <p class="text-white font-semibold mb-2">Video VSL próximamente</p>
+            <p class="text-gray-400 text-sm">El video se cargará aquí cuando esté listo</p>
+          </div>
+        </div>
+
+        <!-- Uncomment and add YouTube video ID when ready:
+        <iframe
+          class="absolute inset-0 w-full h-full"
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1"
+          title="DataPocket Demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-datapocket-surface-light py-12 bg-datapocket-navy">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <!-- Logo + description -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-8 h-8 text-datapocket-teal" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 7.5 7.8 8.4 8.3 9.2C6.5 10.1 5 12 5 14.5C5 17.5 7.5 20 10.5 20H13.5C16.5 20 19 17.5 19 14.5C19 12 17.5 10.1 15.7 9.2C16.2 8.4 16.5 7.5 16.5 6.5C16.5 4 14.5 2 12 2ZM12 4C13.5 4 14.5 5 14.5 6.5C14.5 8 13.5 9 12 9C10.5 9 9.5 8 9.5 6.5C9.5 5 10.5 4 12 4ZM13.5 18H10.5C8.5 18 7 16.5 7 14.5C7 12.5 8.5 11 10.5 11H13.5C15.5 11 17 12.5 17 14.5C17 16.5 15.5 18 13.5 18Z"/>
+            </svg>
+            <div>
+              <span class="font-bold text-lg text-white block">DataPocket</span>
+              <span class="text-xs text-gray-500">by DailyDuty</span>
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm">
+            Instituto para el Desarrollo Diario
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="md:col-span-1 flex flex-col gap-3">
+          <h4 class="text-white font-semibold mb-1">Enlaces</h4>
+          <a
+            href="https://wa.me/573209974750"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-datapocket-teal transition-colors duration-200 inline-flex items-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+          <a
+            href="https://linktr.ee/dailyduty"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-datapocket-teal transition-colors duration-200 inline-flex items-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+            </svg>
+            <span>Linktree</span>
+          </a>
+        </div>
+
+        <!-- Contact -->
+        <div class="md:col-span-1">
+          <h4 class="text-white font-semibold mb-3">Contacto</h4>
+          <a
+            href="mailto:hola@dailyduty.co"
+            class="text-gray-400 hover:text-datapocket-teal transition-colors duration-200 block mb-2"
+          >
+            hola@dailyduty.co
+          </a>
+          <a
+            href="https://wa.me/573209974750"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-datapocket-teal transition-colors duration-200 block"
+          >
+            +57 320 997 4750
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="border-t border-datapocket-surface-light pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm text-center sm:text-left">
+          © 2026 DataPocket — Instituto para el Desarrollo Diario (DailyDuty)
+        </p>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#" class="text-gray-400 hover:text-datapocket-teal transition-colors duration-200">Términos</a>
+          <a href="#" class="text-gray-400 hover:text-datapocket-teal transition-colors duration-200">Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Video modal functions
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    });
+
+    // IntersectionObserver for fade-in animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fade-in sections on scroll
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -100px 0px',
+        threshold: 0.1
+      };
+
+      const fadeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.add('fade-in');
+        fadeObserver.observe(section);
+      });
+
+      // Sticky bar visibility
+      const stickyBar = document.getElementById('stickyBar');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > 300 && currentScrollY > lastScrollY) {
+          // Show sticky bar when scrolling down past 300px
+          stickyBar.classList.remove('translate-y-full');
+        } else if (currentScrollY < lastScrollY || currentScrollY < 100) {
+          // Hide when scrolling up or near top
+          stickyBar.classList.add('translate-y-full');
+        }
+
+        lastScrollY = currentScrollY;
+      }, { passive: true });
+    });
+  </script>
+
+  <!-- Fade-in animation styles -->
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms ease-out, transform 600ms ease-out;
+    }
+
+    .fade-in-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</body>
+</html>
